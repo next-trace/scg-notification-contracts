@@ -1,0 +1,93 @@
+syntax = "proto3";
+
+package proto.scg.notification.shared.models;
+
+import "proto/scg/shared/v1/enums.proto";
+import "google/protobuf/timestamp.proto";
+
+option go_package = "github.com/next-trace/scg-notification-contracts/gen/go/proto/scg/shared/v1;sharedv1";
+
+// NotificationTemplate represents a template for a notification
+message NotificationTemplate {
+  string uuid = 1 [json_name = "uuid"];
+  string name = 2 [json_name = "name"];
+  string description = 3 [json_name = "description"];
+  proto.scg.notification.shared.enums.NotificationType type = 4 [json_name = "type"];
+  proto.scg.notification.shared.enums.NotificationCategory category = 5 [json_name = "category"];
+  proto.scg.notification.shared.enums.DeliveryChannel delivery_channel = 6 [json_name = "delivery_channel"];
+  string subject_template = 7 [json_name = "subject_template"];
+  string body_template = 8 [json_name = "body_template"];
+  map<string, string> metadata = 9 [json_name = "metadata"];
+  google.protobuf.Timestamp created_at = 10 [json_name = "created_at"];
+  google.protobuf.Timestamp updated_at = 11 [json_name = "updated_at"];
+  string version = 12 [json_name = "version"];
+}
+
+// NotificationPreference represents a user's preferences for receiving notifications
+message NotificationPreference {
+  string user_uuid = 1 [json_name = "user_uuid"];
+  proto.scg.notification.shared.enums.NotificationCategory category = 2 [json_name = "category"];
+  proto.scg.notification.shared.enums.NotificationType type = 3 [json_name = "type"];
+  repeated proto.scg.notification.shared.enums.DeliveryChannel enabled_channels = 4 [json_name = "enabled_channels"];
+  bool is_opted_out = 5 [json_name = "is_opted_out"];
+  google.protobuf.Timestamp updated_at = 6 [json_name = "updated_at"];
+}
+
+// NotificationDelivery represents the delivery status of a notification
+message NotificationDelivery {
+  string uuid = 1 [json_name = "uuid"];
+  string notification_uuid = 2 [json_name = "notification_uuid"];
+  string recipient_uuid = 3 [json_name = "recipient_uuid"];
+  proto.scg.notification.shared.enums.DeliveryChannel channel = 4 [json_name = "channel"];
+  proto.scg.notification.shared.enums.NotificationStatus status = 5 [json_name = "status"];
+  string error_message = 6 [json_name = "error_message"];
+  google.protobuf.Timestamp sent_at = 7 [json_name = "sent_at"];
+  google.protobuf.Timestamp delivered_at = 8 [json_name = "delivered_at"];
+  google.protobuf.Timestamp read_at = 9 [json_name = "read_at"];
+  map<string, string> delivery_metadata = 10 [json_name = "delivery_metadata"];
+}
+
+// Notification represents a notification to be sent to a recipient
+message Notification {
+  string uuid = 1 [json_name = "uuid"];
+  string event_uuid = 2 [json_name = "event_uuid"];
+  string event_type = 3 [json_name = "event_type"];
+  string entity_uuid = 4 [json_name = "entity_uuid"];
+  string entity_type = 5 [json_name = "entity_type"];
+  string workflow_step = 6 [json_name = "workflow_step"];
+  string reason = 7 [json_name = "reason"];
+  proto.scg.notification.shared.enums.NotificationType type = 8 [json_name = "type"];
+  proto.scg.notification.shared.enums.NotificationCategory category = 9 [json_name = "category"];
+  proto.scg.notification.shared.enums.NotificationSeverity severity = 10 [json_name = "severity"];
+  proto.scg.notification.shared.enums.NotificationAudience audience = 11 [json_name = "audience"];
+  string subject = 12 [json_name = "subject"];
+  string body = 13 [json_name = "body"];
+  map<string, string> data = 14 [json_name = "data"];
+  repeated string recipient_uuids = 15 [json_name = "recipient_uuids"];
+  google.protobuf.Timestamp created_at = 16 [json_name = "created_at"];
+  google.protobuf.Timestamp expires_at = 17 [json_name = "expires_at"];
+  proto.scg.notification.shared.enums.NotificationStatus status = 18 [json_name = "status"];
+}
+
+// UserNotification represents a notification for a specific user
+message UserNotification {
+  string uuid = 1 [json_name = "uuid"];
+  string notification_uuid = 2 [json_name = "notification_uuid"];
+  string user_uuid = 3 [json_name = "user_uuid"];
+  bool is_read = 4 [json_name = "is_read"];
+  google.protobuf.Timestamp read_at = 5 [json_name = "read_at"];
+  bool is_archived = 6 [json_name = "is_archived"];
+  google.protobuf.Timestamp archived_at = 7 [json_name = "archived_at"];
+}
+
+// NotificationDigest represents a digest of multiple notifications
+message NotificationDigest {
+  string uuid = 1 [json_name = "uuid"];
+  string user_uuid = 2 [json_name = "user_uuid"];
+  proto.scg.notification.shared.enums.NotificationCategory category = 3 [json_name = "category"];
+  google.protobuf.Timestamp digest_period_start = 4 [json_name = "digest_period_start"];
+  google.protobuf.Timestamp digest_period_end = 5 [json_name = "digest_period_end"];
+  repeated string notification_uuids = 6 [json_name = "notification_uuids"];
+  google.protobuf.Timestamp created_at = 7 [json_name = "created_at"];
+  proto.scg.notification.shared.enums.NotificationStatus status = 8 [json_name = "status"];
+}

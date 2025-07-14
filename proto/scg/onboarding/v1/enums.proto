@@ -1,0 +1,35 @@
+syntax = "proto3";
+
+package proto.scg.notification.onboarding.enums;
+
+option go_package = "github.com/next-trace/scg-notification-contracts/gen/go/proto/scg/onboarding/v1;onboardingv1";
+
+// OnboardingStatus represents the status of an onboarding workflow
+enum OnboardingStatus {
+  ONBOARDING_STATUS_UNSPECIFIED = 0;
+  ONBOARDING_STATUS_PENDING = 1;
+  ONBOARDING_STATUS_IN_PROGRESS = 2;
+  ONBOARDING_STATUS_COMPLETED = 3;
+  ONBOARDING_STATUS_FAILED = 4;
+  ONBOARDING_STATUS_CANCELLED = 5;
+}
+
+// OnboardingStepStatus represents the status of an onboarding step
+enum OnboardingStepStatus {
+  ONBOARDING_STEP_STATUS_UNSPECIFIED = 0;
+  ONBOARDING_STEP_STATUS_PENDING = 1;
+  ONBOARDING_STEP_STATUS_IN_PROGRESS = 2;
+  ONBOARDING_STEP_STATUS_COMPLETED = 3;
+  ONBOARDING_STEP_STATUS_FAILED = 4;
+  ONBOARDING_STEP_STATUS_SKIPPED = 5;
+}
+
+// PartnerType represents the type of partner
+enum PartnerType {
+  PARTNER_TYPE_UNSPECIFIED = 0;
+  PARTNER_TYPE_SUPPLIER = 1;
+  PARTNER_TYPE_DISTRIBUTOR = 2;
+  PARTNER_TYPE_MANUFACTURER = 3;
+  PARTNER_TYPE_RETAILER = 4;
+  PARTNER_TYPE_LOGISTICS = 5;
+}

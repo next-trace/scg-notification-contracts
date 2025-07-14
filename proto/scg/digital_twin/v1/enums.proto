@@ -1,0 +1,34 @@
+syntax = "proto3";
+
+package proto.scg.notification.digital_twin.enums;
+
+option go_package = "github.com/next-trace/scg-notification-contracts/gen/go/proto/scg/digital_twin/v1;digitaltwinv1";
+
+// DigitalTwinType represents the type of digital twin
+enum DigitalTwinType {
+  DIGITAL_TWIN_TYPE_UNSPECIFIED = 0;
+  DIGITAL_TWIN_TYPE_PRODUCT = 1;
+  DIGITAL_TWIN_TYPE_ASSET = 2;
+  DIGITAL_TWIN_TYPE_EQUIPMENT = 3;
+  DIGITAL_TWIN_TYPE_FACILITY = 4;
+  DIGITAL_TWIN_TYPE_VEHICLE = 5;
+}
+
+// DigitalTwinStatus represents the status of a digital twin
+enum DigitalTwinStatus {
+  DIGITAL_TWIN_STATUS_UNSPECIFIED = 0;
+  DIGITAL_TWIN_STATUS_ACTIVE = 1;
+  DIGITAL_TWIN_STATUS_INACTIVE = 2;
+  DIGITAL_TWIN_STATUS_MAINTENANCE = 3;
+  DIGITAL_TWIN_STATUS_DECOMMISSIONED = 4;
+}
+
+// AlertType represents the type of alert from a digital twin
+enum AlertType {
+  ALERT_TYPE_UNSPECIFIED = 0;
+  ALERT_TYPE_THRESHOLD_EXCEEDED = 1;
+  ALERT_TYPE_ANOMALY_DETECTED = 2;
+  ALERT_TYPE_MAINTENANCE_REQUIRED = 3;
+  ALERT_TYPE_FAILURE_PREDICTED = 4;
+  ALERT_TYPE_SECURITY_BREACH = 5;
+}

@@ -1,0 +1,108 @@
+syntax = "proto3";
+
+package proto.scg.notification.provenance.events;
+
+import "proto/scg/shared/v1/events.proto";
+import "proto/scg/provenance/v1/enums.proto";
+import "google/protobuf/timestamp.proto";
+
+option go_package = "github.com/next-trace/scg-notification-contracts/gen/go/proto/scg/provenance/v1;provenancev1";
+
+// ProvenanceRecordCreatedNotification is sent when a new provenance record is created
+message ProvenanceRecordCreatedNotification {
+  proto.scg.notification.shared.events.NotificationEvent base = 1 [json_name = "base"];
+  string provenance_record_id = 2 [json_name = "provenance_record_id"];
+  string entity_id = 3 [json_name = "entity_id"];
+  string entity_type = 4 [json_name = "entity_type"];
+  proto.scg.notification.provenance.enums.ProvenanceRecordType record_type = 5 [json_name = "record_type"];
+  string location = 6 [json_name = "location"];
+  string actor_id = 7 [json_name = "actor_id"];
+  string actor_name = 8 [json_name = "actor_name"];
+  string organization_id = 9 [json_name = "organization_id"];
+  string organization_name = 10 [json_name = "organization_name"];
+  string description = 11 [json_name = "description"];
+  google.protobuf.Timestamp occurred_at = 12 [json_name = "occurred_at"];
+  google.protobuf.Timestamp recorded_at = 13 [json_name = "recorded_at"];
+}
+
+// ProvenanceRecordVerifiedNotification is sent when a provenance record is verified
+message ProvenanceRecordVerifiedNotification {
+  proto.scg.notification.shared.events.NotificationEvent base = 1 [json_name = "base"];
+  string provenance_record_id = 2 [json_name = "provenance_record_id"];
+  string entity_id = 3 [json_name = "entity_id"];
+  string entity_type = 4 [json_name = "entity_type"];
+  proto.scg.notification.provenance.enums.ProvenanceRecordType record_type = 5 [json_name = "record_type"];
+  proto.scg.notification.provenance.enums.ProvenanceVerificationMethod verification_method = 6 [json_name = "verification_method"];
+  string verifier_id = 7 [json_name = "verifier_id"];
+  string verifier_name = 8 [json_name = "verifier_name"];
+  string verification_notes = 9 [json_name = "verification_notes"];
+  google.protobuf.Timestamp verified_at = 10 [json_name = "verified_at"];
+}
+
+// ProvenanceRecordDisputedNotification is sent when a provenance record is disputed
+message ProvenanceRecordDisputedNotification {
+  proto.scg.notification.shared.events.NotificationEvent base = 1 [json_name = "base"];
+  string dispute_id = 2 [json_name = "dispute_id"];
+  string provenance_record_id = 3 [json_name = "provenance_record_id"];
+  string entity_id = 4 [json_name = "entity_id"];
+  string entity_type = 5 [json_name = "entity_type"];
+  string disputant_id = 6 [json_name = "disputant_id"];
+  string disputant_name = 7 [json_name = "disputant_name"];
+  string disputant_organization_id = 8 [json_name = "disputant_organization_id"];
+  string disputant_organization_name = 9 [json_name = "disputant_organization_name"];
+  proto.scg.notification.provenance.enums.ProvenanceDisputeReason reason = 10 [json_name = "reason"];
+  string description = 11 [json_name = "description"];
+  google.protobuf.Timestamp disputed_at = 12 [json_name = "disputed_at"];
+}
+
+// ProvenanceDisputeResolvedNotification is sent when a provenance dispute is resolved
+message ProvenanceDisputeResolvedNotification {
+  proto.scg.notification.shared.events.NotificationEvent base = 1 [json_name = "base"];
+  string dispute_id = 2 [json_name = "dispute_id"];
+  string provenance_record_id = 3 [json_name = "provenance_record_id"];
+  string entity_id = 4 [json_name = "entity_id"];
+  string entity_type = 5 [json_name = "entity_type"];
+  string resolution = 6 [json_name = "resolution"];
+  string resolver_id = 7 [json_name = "resolver_id"];
+  string resolver_name = 8 [json_name = "resolver_name"];
+  google.protobuf.Timestamp resolved_at = 9 [json_name = "resolved_at"];
+}
+
+// ProvenanceChainCompletedNotification is sent when a provenance chain is completed
+message ProvenanceChainCompletedNotification {
+  proto.scg.notification.shared.events.NotificationEvent base = 1 [json_name = "base"];
+  string provenance_chain_id = 2 [json_name = "provenance_chain_id"];
+  string entity_id = 3 [json_name = "entity_id"];
+  string entity_type = 4 [json_name = "entity_type"];
+  int32 record_count = 5 [json_name = "record_count"];
+  bool is_verified = 6 [json_name = "is_verified"];
+  google.protobuf.Timestamp completed_at = 7 [json_name = "completed_at"];
+}
+
+// ProvenanceCertificationIssuedNotification is sent when a provenance certification is issued
+message ProvenanceCertificationIssuedNotification {
+  proto.scg.notification.shared.events.NotificationEvent base = 1 [json_name = "base"];
+  string certification_id = 2 [json_name = "certification_id"];
+  string entity_id = 3 [json_name = "entity_id"];
+  string entity_type = 4 [json_name = "entity_type"];
+  string certification_type = 5 [json_name = "certification_type"];
+  string certification_name = 6 [json_name = "certification_name"];
+  string issuer_id = 7 [json_name = "issuer_id"];
+  string issuer_name = 8 [json_name = "issuer_name"];
+  google.protobuf.Timestamp issued_at = 9 [json_name = "issued_at"];
+  google.protobuf.Timestamp valid_until = 10 [json_name = "valid_until"];
+}
+
+// ProvenanceCertificationExpiringNotification is sent when a provenance certification is about to expire
+message ProvenanceCertificationExpiringNotification {
+  proto.scg.notification.shared.events.NotificationEvent base = 1 [json_name = "base"];
+  string certification_id = 2 [json_name = "certification_id"];
+  string entity_id = 3 [json_name = "entity_id"];
+  string entity_type = 4 [json_name = "entity_type"];
+  string certification_type = 5 [json_name = "certification_type"];
+  string certification_name = 6 [json_name = "certification_name"];
+  string issuer_id = 7 [json_name = "issuer_id"];
+  string issuer_name = 8 [json_name = "issuer_name"];
+  google.protobuf.Timestamp valid_until = 9 [json_name = "valid_until"];
+  int32 days_until_expiration = 10 [json_name = "days_until_expiration"];
+}

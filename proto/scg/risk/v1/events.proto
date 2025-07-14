@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+package proto.scg.notification.risk.events;
+
+import "proto/scg/shared/v1/events.proto";
+import "proto/scg/shared/v1/enums.proto";
+import "google/protobuf/timestamp.proto";
+
+option go_package = "github.com/next-trace/scg-notification-contracts/gen/go/proto/scg/risk/v1;riskv1";
+
+// RiskAlertNotification is sent when a risk threshold is exceeded
+message RiskAlertNotification {
+  proto.scg.notification.shared.events.NotificationEvent base = 1 [json_name = "base"];
+  string entity_id = 2 [json_name = "entity_id"];
+  string entity_type = 3 [json_name = "entity_type"];
+  string risk_type = 4 [json_name = "risk_type"];
+  string risk_description = 5 [json_name = "risk_description"];
+  double risk_score = 6 [json_name = "risk_score"];
+  double threshold = 7 [json_name = "threshold"];
+  proto.scg.notification.shared.enums.NotificationSeverity severity = 8 [json_name = "severity"];
+  google.protobuf.Timestamp detected_at = 9 [json_name = "detected_at"];
+}

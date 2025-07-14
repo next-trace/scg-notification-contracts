@@ -1,0 +1,47 @@
+syntax = "proto3";
+
+package proto.scg.notification.partner.enums;
+
+option go_package = "github.com/next-trace/scg-notification-contracts/gen/go/proto/scg/partner/v1;partnerv1";
+
+// PartnerStatus represents the status of a partner
+enum PartnerStatus {
+  PARTNER_STATUS_UNSPECIFIED = 0;
+  PARTNER_STATUS_PENDING = 1;
+  PARTNER_STATUS_ACTIVE = 2;
+  PARTNER_STATUS_INACTIVE = 3;
+  PARTNER_STATUS_SUSPENDED = 4;
+  PARTNER_STATUS_TERMINATED = 5;
+}
+
+// PartnerType represents the type of partner
+enum PartnerType {
+  PARTNER_TYPE_UNSPECIFIED = 0;
+  PARTNER_TYPE_SUPPLIER = 1;
+  PARTNER_TYPE_DISTRIBUTOR = 2;
+  PARTNER_TYPE_MANUFACTURER = 3;
+  PARTNER_TYPE_RETAILER = 4;
+  PARTNER_TYPE_LOGISTICS_PROVIDER = 5;
+  PARTNER_TYPE_SERVICE_PROVIDER = 6;
+  PARTNER_TYPE_CUSTOMER = 7;
+}
+
+// PartnerTier represents the tier or level of a partner
+enum PartnerTier {
+  PARTNER_TIER_UNSPECIFIED = 0;
+  PARTNER_TIER_BRONZE = 1;
+  PARTNER_TIER_SILVER = 2;
+  PARTNER_TIER_GOLD = 3;
+  PARTNER_TIER_PLATINUM = 4;
+  PARTNER_TIER_DIAMOND = 5;
+}
+
+// PartnerVerificationStatus represents the verification status of a partner
+enum PartnerVerificationStatus {
+  PARTNER_VERIFICATION_STATUS_UNSPECIFIED = 0;
+  PARTNER_VERIFICATION_STATUS_NOT_STARTED = 1;
+  PARTNER_VERIFICATION_STATUS_IN_PROGRESS = 2;
+  PARTNER_VERIFICATION_STATUS_VERIFIED = 3;
+  PARTNER_VERIFICATION_STATUS_REJECTED = 4;
+  PARTNER_VERIFICATION_STATUS_REQUIRES_ADDITIONAL_INFO = 5;
+}

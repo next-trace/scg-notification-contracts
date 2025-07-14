@@ -1,0 +1,90 @@
+syntax = "proto3";
+
+package proto.scg.notification.partner.events;
+
+import "proto/scg/shared/v1/events.proto";
+import "proto/scg/partner/v1/enums.proto";
+import "google/protobuf/timestamp.proto";
+
+option go_package = "github.com/next-trace/scg-notification-contracts/gen/go/proto/scg/partner/v1;partnerv1";
+
+// PartnerCreatedNotification is sent when a new partner is created
+message PartnerCreatedNotification {
+  proto.scg.notification.shared.events.NotificationEvent base = 1 [json_name = "base"];
+  string partner_id = 2 [json_name = "partner_id"];
+  string partner_name = 3 [json_name = "partner_name"];
+  string partner_legal_name = 4 [json_name = "partner_legal_name"];
+  proto.scg.notification.partner.enums.PartnerType partner_type = 5 [json_name = "partner_type"];
+  string primary_contact_name = 6 [json_name = "primary_contact_name"];
+  string primary_contact_email = 7 [json_name = "primary_contact_email"];
+  string created_by_id = 8 [json_name = "created_by_id"];
+  string created_by_name = 9 [json_name = "created_by_name"];
+  google.protobuf.Timestamp created_at = 10 [json_name = "created_at"];
+}
+
+// PartnerStatusChangedNotification is sent when a partner's status changes
+message PartnerStatusChangedNotification {
+  proto.scg.notification.shared.events.NotificationEvent base = 1 [json_name = "base"];
+  string partner_id = 2 [json_name = "partner_id"];
+  string partner_name = 3 [json_name = "partner_name"];
+  proto.scg.notification.partner.enums.PartnerStatus previous_status = 4 [json_name = "previous_status"];
+  proto.scg.notification.partner.enums.PartnerStatus new_status = 5 [json_name = "new_status"];
+  string reason = 6 [json_name = "reason"];
+  string actor_id = 7 [json_name = "actor_id"];
+  string actor_name = 8 [json_name = "actor_name"];
+  google.protobuf.Timestamp status_changed_at = 9 [json_name = "status_changed_at"];
+}
+
+// PartnerVerificationStatusChangedNotification is sent when a partner's verification status changes
+message PartnerVerificationStatusChangedNotification {
+  proto.scg.notification.shared.events.NotificationEvent base = 1 [json_name = "base"];
+  string partner_id = 2 [json_name = "partner_id"];
+  string partner_name = 3 [json_name = "partner_name"];
+  proto.scg.notification.partner.enums.PartnerVerificationStatus previous_status = 4 [json_name = "previous_status"];
+  proto.scg.notification.partner.enums.PartnerVerificationStatus new_status = 5 [json_name = "new_status"];
+  string verifier_id = 6 [json_name = "verifier_id"];
+  string verifier_name = 7 [json_name = "verifier_name"];
+  string notes = 8 [json_name = "notes"];
+  google.protobuf.Timestamp status_changed_at = 9 [json_name = "status_changed_at"];
+}
+
+// PartnerAgreementCreatedNotification is sent when a new partner agreement is created
+message PartnerAgreementCreatedNotification {
+  proto.scg.notification.shared.events.NotificationEvent base = 1 [json_name = "base"];
+  string agreement_id = 2 [json_name = "agreement_id"];
+  string partner_id = 3 [json_name = "partner_id"];
+  string partner_name = 4 [json_name = "partner_name"];
+  string agreement_type = 5 [json_name = "agreement_type"];
+  string agreement_name = 6 [json_name = "agreement_name"];
+  google.protobuf.Timestamp effective_date = 7 [json_name = "effective_date"];
+  google.protobuf.Timestamp expiration_date = 8 [json_name = "expiration_date"];
+  string created_by_id = 9 [json_name = "created_by_id"];
+  string created_by_name = 10 [json_name = "created_by_name"];
+  google.protobuf.Timestamp created_at = 11 [json_name = "created_at"];
+}
+
+// PartnerAgreementSignedNotification is sent when a partner agreement is signed
+message PartnerAgreementSignedNotification {
+  proto.scg.notification.shared.events.NotificationEvent base = 1 [json_name = "base"];
+  string agreement_id = 2 [json_name = "agreement_id"];
+  string partner_id = 3 [json_name = "partner_id"];
+  string partner_name = 4 [json_name = "partner_name"];
+  string agreement_type = 5 [json_name = "agreement_type"];
+  string agreement_name = 6 [json_name = "agreement_name"];
+  string signed_by_id = 7 [json_name = "signed_by_id"];
+  string signed_by_name = 8 [json_name = "signed_by_name"];
+  string signed_on_behalf_of = 9 [json_name = "signed_on_behalf_of"];
+  google.protobuf.Timestamp signed_at = 10 [json_name = "signed_at"];
+}
+
+// PartnerAgreementExpiringNotification is sent when a partner agreement is about to expire
+message PartnerAgreementExpiringNotification {
+  proto.scg.notification.shared.events.NotificationEvent base = 1 [json_name = "base"];
+  string agreement_id = 2 [json_name = "agreement_id"];
+  string partner_id = 3 [json_name = "partner_id"];
+  string partner_name = 4 [json_name = "partner_name"];
+  string agreement_type = 5 [json_name = "agreement_type"];
+  string agreement_name = 6 [json_name = "agreement_name"];
+  google.protobuf.Timestamp expiration_date = 7 [json_name = "expiration_date"];
+  int32 days_until_expiration = 8 [json_name = "days_until_expiration"];
+}

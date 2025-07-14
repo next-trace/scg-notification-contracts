@@ -1,0 +1,38 @@
+syntax = "proto3";
+
+package proto.scg.notification.digital_twin.models;
+
+import "proto/scg/shared/v1/enums.proto";
+import "proto/scg/digital_twin/v1/enums.proto";
+import "google/protobuf/timestamp.proto";
+
+option go_package = "github.com/next-trace/scg-notification-contracts/gen/go/proto/scg/digital_twin/v1;digitaltwinv1";
+
+// DigitalTwin represents a digital twin in the system
+message DigitalTwin {
+  string id = 1 [json_name = "id"];
+  string name = 2 [json_name = "name"];
+  string description = 3 [json_name = "description"];
+  proto.scg.notification.digital_twin.enums.DigitalTwinType type = 4 [json_name = "type"];
+  proto.scg.notification.digital_twin.enums.DigitalTwinStatus status = 5 [json_name = "status"];
+  string physical_asset_id = 6 [json_name = "physical_asset_id"];
+  string physical_asset_type = 7 [json_name = "physical_asset_type"];
+  map<string, string> properties = 8 [json_name = "properties"];
+  map<string, double> thresholds = 9 [json_name = "thresholds"];
+  google.protobuf.Timestamp created_at = 10 [json_name = "created_at"];
+  google.protobuf.Timestamp updated_at = 11 [json_name = "updated_at"];
+}
+
+// DigitalTwinAlert represents an alert from a digital twin
+message DigitalTwinAlert {
+  string id = 1 [json_name = "id"];
+  string digital_twin_id = 2 [json_name = "digital_twin_id"];
+  proto.scg.notification.digital_twin.enums.AlertType alert_type = 3 [json_name = "alert_type"];
+  string alert_description = 4 [json_name = "alert_description"];
+  map<string, string> sensor_data = 5 [json_name = "sensor_data"];
+  proto.scg.notification.shared.enums.NotificationSeverity severity = 6 [json_name = "severity"];
+  google.protobuf.Timestamp detected_at = 7 [json_name = "detected_at"];
+  google.protobuf.Timestamp resolved_at = 8 [json_name = "resolved_at"];
+  bool is_resolved = 9 [json_name = "is_resolved"];
+  string resolution_description = 10 [json_name = "resolution_description"];
+}

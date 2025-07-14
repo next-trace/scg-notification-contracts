@@ -1,0 +1,70 @@
+syntax = "proto3";
+
+package proto.scg.notification.warehouse.events;
+
+import "proto/scg/shared/v1/events.proto";
+import "proto/scg/warehouse/v1/enums.proto";
+import "google/protobuf/timestamp.proto";
+
+option go_package = "github.com/next-trace/scg-notification-contracts/gen/go/proto/scg/warehouse/v1;warehousev1";
+
+// WarehouseCreatedNotification is sent when a new warehouse is created
+message WarehouseCreatedNotification {
+  proto.scg.notification.shared.events.NotificationEvent base = 1 [json_name = "base"];
+  string warehouse_id = 2 [json_name = "warehouse_id"];
+  string warehouse_name = 3 [json_name = "warehouse_name"];
+  string warehouse_code = 4 [json_name = "warehouse_code"];
+  string location = 5 [json_name = "location"];
+  proto.scg.notification.warehouse.enums.WarehouseType type = 6 [json_name = "type"];
+  float total_capacity = 7 [json_name = "total_capacity"];
+  string manager_id = 8 [json_name = "manager_id"];
+  string manager_name = 9 [json_name = "manager_name"];
+  google.protobuf.Timestamp created_at = 10 [json_name = "created_at"];
+}
+
+// WarehouseStatusChangedNotification is sent when a warehouse's status changes
+message WarehouseStatusChangedNotification {
+  proto.scg.notification.shared.events.NotificationEvent base = 1 [json_name = "base"];
+  string warehouse_id = 2 [json_name = "warehouse_id"];
+  string warehouse_name = 3 [json_name = "warehouse_name"];
+  string warehouse_code = 4 [json_name = "warehouse_code"];
+  proto.scg.notification.warehouse.enums.WarehouseStatus previous_status = 5 [json_name = "previous_status"];
+  proto.scg.notification.warehouse.enums.WarehouseStatus new_status = 6 [json_name = "new_status"];
+  string reason = 7 [json_name = "reason"];
+  string changed_by_id = 8 [json_name = "changed_by_id"];
+  string changed_by_name = 9 [json_name = "changed_by_name"];
+  google.protobuf.Timestamp status_changed_at = 10 [json_name = "status_changed_at"];
+}
+
+// InventoryOperationCompletedNotification is sent when an inventory operation is completed
+message InventoryOperationCompletedNotification {
+  proto.scg.notification.shared.events.NotificationEvent base = 1 [json_name = "base"];
+  string operation_id = 2 [json_name = "operation_id"];
+  string warehouse_id = 3 [json_name = "warehouse_id"];
+  string warehouse_name = 4 [json_name = "warehouse_name"];
+  string zone_id = 5 [json_name = "zone_id"];
+  string zone_name = 6 [json_name = "zone_name"];
+  proto.scg.notification.warehouse.enums.InventoryOperationType operation_type = 7 [json_name = "operation_type"];
+  string product_id = 8 [json_name = "product_id"];
+  string product_name = 9 [json_name = "product_name"];
+  string product_sku = 10 [json_name = "product_sku"];
+  float quantity = 11 [json_name = "quantity"];
+  string unit_of_measure = 12 [json_name = "unit_of_measure"];
+  string operator_id = 13 [json_name = "operator_id"];
+  string operator_name = 14 [json_name = "operator_name"];
+  google.protobuf.Timestamp operation_time = 15 [json_name = "operation_time"];
+}
+
+// WarehouseCapacityThresholdReachedNotification is sent when a warehouse reaches a capacity threshold
+message WarehouseCapacityThresholdReachedNotification {
+  proto.scg.notification.shared.events.NotificationEvent base = 1 [json_name = "base"];
+  string warehouse_id = 2 [json_name = "warehouse_id"];
+  string warehouse_name = 3 [json_name = "warehouse_name"];
+  string warehouse_code = 4 [json_name = "warehouse_code"];
+  float total_capacity = 5 [json_name = "total_capacity"];
+  float available_capacity = 6 [json_name = "available_capacity"];
+  float utilization_percentage = 7 [json_name = "utilization_percentage"];
+  float threshold_percentage = 8 [json_name = "threshold_percentage"];
+  string threshold_type = 9 [json_name = "threshold_type"];
+  google.protobuf.Timestamp threshold_reached_at = 10 [json_name = "threshold_reached_at"];
+}

@@ -1,0 +1,49 @@
+syntax = "proto3";
+
+package proto.scg.notification.system.models;
+
+import "proto/scg/system/v1/enums.proto";
+import "google/protobuf/timestamp.proto";
+
+option go_package = "github.com/next-trace/scg-notification-contracts/gen/go/proto/scg/system/v1;systemv1";
+
+// SystemMaintenance represents a system maintenance event
+message SystemMaintenance {
+  string uuid = 1 [json_name = "uuid"];
+  string name = 2 [json_name = "name"];
+  string description = 3 [json_name = "description"];
+  proto.scg.notification.system.enums.MaintenanceType maintenance_type = 4 [json_name = "maintenance_type"];
+  google.protobuf.Timestamp start_time = 5 [json_name = "start_time"];
+  google.protobuf.Timestamp end_time = 6 [json_name = "end_time"];
+  repeated string affected_services = 7 [json_name = "affected_services"];
+  bool requires_action = 8 [json_name = "requires_action"];
+  string action_description = 9 [json_name = "action_description"];
+  google.protobuf.Timestamp created_at = 10 [json_name = "created_at"];
+  google.protobuf.Timestamp updated_at = 11 [json_name = "updated_at"];
+}
+
+// Integration represents an integration with an external system
+message Integration {
+  string uuid = 1 [json_name = "uuid"];
+  string name = 2 [json_name = "name"];
+  string description = 3 [json_name = "description"];
+  proto.scg.notification.system.enums.IntegrationType type = 4 [json_name = "type"];
+  string endpoint = 5 [json_name = "endpoint"];
+  map<string, string> configuration = 6 [json_name = "configuration"];
+  bool is_active = 7 [json_name = "is_active"];
+  google.protobuf.Timestamp created_at = 8 [json_name = "created_at"];
+  google.protobuf.Timestamp updated_at = 9 [json_name = "updated_at"];
+}
+
+// IntegrationFailure represents a failure in an integration
+message IntegrationFailure {
+  string uuid = 1 [json_name = "uuid"];
+  string integration_uuid = 2 [json_name = "integration_uuid"];
+  string integration_name = 3 [json_name = "integration_name"];
+  string failure_reason = 4 [json_name = "failure_reason"];
+  string error_details = 5 [json_name = "error_details"];
+  int32 retry_count = 6 [json_name = "retry_count"];
+  google.protobuf.Timestamp failure_time = 7 [json_name = "failure_time"];
+  bool requires_manual_intervention = 8 [json_name = "requires_manual_intervention"];
+  string resolution_steps = 9 [json_name = "resolution_steps"];
+}

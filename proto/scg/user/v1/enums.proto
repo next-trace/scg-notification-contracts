@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+package proto.scg.notification.user.enums;
+
+option go_package = "github.com/next-trace/scg-notification-contracts/gen/go/proto/scg/user/v1;userv1";
+
+// UserNotificationStatus represents the status of a user notification
+enum UserNotificationStatus {
+  USER_NOTIFICATION_STATUS_UNSPECIFIED = 0;
+  USER_NOTIFICATION_STATUS_UNREAD = 1;
+  USER_NOTIFICATION_STATUS_READ = 2;
+  USER_NOTIFICATION_STATUS_ARCHIVED = 3;
+}
+
+// UserRole represents the role of a user in the system
+enum UserRole {
+  USER_ROLE_UNSPECIFIED = 0;
+  USER_ROLE_ADMIN = 1;
+  USER_ROLE_USER = 2;
+  USER_ROLE_PARTNER = 3;
+  USER_ROLE_GUEST = 4;
+}

@@ -1,0 +1,79 @@
+syntax = "proto3";
+
+package proto.scg.notification.event_log.events;
+
+import "proto/scg/shared/v1/events.proto";
+import "proto/scg/event_log/v1/enums.proto";
+import "google/protobuf/timestamp.proto";
+
+option go_package = "github.com/next-trace/scg-notification-contracts/gen/go/proto/scg/event_log/v1;event_logv1";
+
+// CriticalEventLogNotification is sent when a critical event is logged
+message CriticalEventLogNotification {
+  proto.scg.notification.shared.events.NotificationEvent base = 1 [json_name = "base"];
+  string event_log_id = 2 [json_name = "event_log_id"];
+  string event_type = 3 [json_name = "event_type"];
+  string source = 4 [json_name = "source"];
+  string actor_id = 5 [json_name = "actor_id"];
+  string actor_name = 6 [json_name = "actor_name"];
+  string entity_id = 7 [json_name = "entity_id"];
+  string entity_type = 8 [json_name = "entity_type"];
+  string message = 9 [json_name = "message"];
+  google.protobuf.Timestamp occurred_at = 10 [json_name = "occurred_at"];
+}
+
+// SecurityEventLogNotification is sent when a security-related event is logged
+message SecurityEventLogNotification {
+  proto.scg.notification.shared.events.NotificationEvent base = 1 [json_name = "base"];
+  string event_log_id = 2 [json_name = "event_log_id"];
+  string event_type = 3 [json_name = "event_type"];
+  string source = 4 [json_name = "source"];
+  string actor_id = 5 [json_name = "actor_id"];
+  string actor_name = 6 [json_name = "actor_name"];
+  string entity_id = 7 [json_name = "entity_id"];
+  string entity_type = 8 [json_name = "entity_type"];
+  proto.scg.notification.event_log.enums.EventLogSeverity severity = 9 [json_name = "severity"];
+  string message = 10 [json_name = "message"];
+  google.protobuf.Timestamp occurred_at = 11 [json_name = "occurred_at"];
+}
+
+// AuditEventLogNotification is sent when an audit-related event is logged
+message AuditEventLogNotification {
+  proto.scg.notification.shared.events.NotificationEvent base = 1 [json_name = "base"];
+  string event_log_id = 2 [json_name = "event_log_id"];
+  string event_type = 3 [json_name = "event_type"];
+  string source = 4 [json_name = "source"];
+  string actor_id = 5 [json_name = "actor_id"];
+  string actor_name = 6 [json_name = "actor_name"];
+  string entity_id = 7 [json_name = "entity_id"];
+  string entity_type = 8 [json_name = "entity_type"];
+  string message = 9 [json_name = "message"];
+  google.protobuf.Timestamp occurred_at = 10 [json_name = "occurred_at"];
+}
+
+// EventLogAggregationNotification is sent with an aggregation of event logs
+message EventLogAggregationNotification {
+  proto.scg.notification.shared.events.NotificationEvent base = 1 [json_name = "base"];
+  string aggregation_id = 2 [json_name = "aggregation_id"];
+  string aggregation_name = 3 [json_name = "aggregation_name"];
+  int32 total_events = 4 [json_name = "total_events"];
+  int32 critical_events = 5 [json_name = "critical_events"];
+  int32 error_events = 6 [json_name = "error_events"];
+  int32 warning_events = 7 [json_name = "warning_events"];
+  google.protobuf.Timestamp aggregation_period_start = 8 [json_name = "aggregation_period_start"];
+  google.protobuf.Timestamp aggregation_period_end = 9 [json_name = "aggregation_period_end"];
+}
+
+// EventLogThresholdExceededNotification is sent when the number of events exceeds a threshold
+message EventLogThresholdExceededNotification {
+  proto.scg.notification.shared.events.NotificationEvent base = 1 [json_name = "base"];
+  string threshold_name = 2 [json_name = "threshold_name"];
+  string threshold_description = 3 [json_name = "threshold_description"];
+  int32 threshold_value = 4 [json_name = "threshold_value"];
+  int32 actual_value = 5 [json_name = "actual_value"];
+  proto.scg.notification.event_log.enums.EventLogSeverity severity = 6 [json_name = "severity"];
+  proto.scg.notification.event_log.enums.EventLogCategory category = 7 [json_name = "category"];
+  google.protobuf.Timestamp threshold_exceeded_at = 8 [json_name = "threshold_exceeded_at"];
+  google.protobuf.Timestamp measurement_period_start = 9 [json_name = "measurement_period_start"];
+  google.protobuf.Timestamp measurement_period_end = 10 [json_name = "measurement_period_end"];
+}

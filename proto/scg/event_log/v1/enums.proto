@@ -1,0 +1,36 @@
+syntax = "proto3";
+
+package proto.scg.notification.event_log.enums;
+
+option go_package = "github.com/next-trace/scg-notification-contracts/gen/go/proto/scg/event_log/v1;event_logv1";
+
+// EventLogSeverity represents the severity level of an event log entry
+enum EventLogSeverity {
+  EVENT_LOG_SEVERITY_UNSPECIFIED = 0;
+  EVENT_LOG_SEVERITY_DEBUG = 1;
+  EVENT_LOG_SEVERITY_INFO = 2;
+  EVENT_LOG_SEVERITY_WARNING = 3;
+  EVENT_LOG_SEVERITY_ERROR = 4;
+  EVENT_LOG_SEVERITY_CRITICAL = 5;
+}
+
+// EventLogCategory represents the category of an event log entry
+enum EventLogCategory {
+  EVENT_LOG_CATEGORY_UNSPECIFIED = 0;
+  EVENT_LOG_CATEGORY_SYSTEM = 1;
+  EVENT_LOG_CATEGORY_SECURITY = 2;
+  EVENT_LOG_CATEGORY_BUSINESS = 3;
+  EVENT_LOG_CATEGORY_AUDIT = 4;
+  EVENT_LOG_CATEGORY_INTEGRATION = 5;
+  EVENT_LOG_CATEGORY_PERFORMANCE = 6;
+}
+
+// EventLogStatus represents the status of an event log entry
+enum EventLogStatus {
+  EVENT_LOG_STATUS_UNSPECIFIED = 0;
+  EVENT_LOG_STATUS_SUCCESS = 1;
+  EVENT_LOG_STATUS_FAILURE = 2;
+  EVENT_LOG_STATUS_WARNING = 3;
+  EVENT_LOG_STATUS_IN_PROGRESS = 4;
+  EVENT_LOG_STATUS_CANCELLED = 5;
+}

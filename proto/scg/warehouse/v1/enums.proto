@@ -1,0 +1,39 @@
+syntax = "proto3";
+
+package proto.scg.notification.warehouse.enums;
+
+option go_package = "github.com/next-trace/scg-notification-contracts/gen/go/proto/scg/warehouse/v1;warehousev1";
+
+// WarehouseStatus represents the status of a warehouse
+enum WarehouseStatus {
+  WAREHOUSE_STATUS_UNSPECIFIED = 0;
+  WAREHOUSE_STATUS_ACTIVE = 1;
+  WAREHOUSE_STATUS_INACTIVE = 2;
+  WAREHOUSE_STATUS_MAINTENANCE = 3;
+  WAREHOUSE_STATUS_CLOSED = 4;
+}
+
+// WarehouseType represents the type of warehouse
+enum WarehouseType {
+  WAREHOUSE_TYPE_UNSPECIFIED = 0;
+  WAREHOUSE_TYPE_DISTRIBUTION = 1;
+  WAREHOUSE_TYPE_FULFILLMENT = 2;
+  WAREHOUSE_TYPE_STORAGE = 3;
+  WAREHOUSE_TYPE_CROSS_DOCK = 4;
+  WAREHOUSE_TYPE_COLD_STORAGE = 5;
+  WAREHOUSE_TYPE_BONDED = 6;
+}
+
+// InventoryOperationType represents the type of inventory operation
+enum InventoryOperationType {
+  INVENTORY_OPERATION_TYPE_UNSPECIFIED = 0;
+  INVENTORY_OPERATION_TYPE_RECEIPT = 1;
+  INVENTORY_OPERATION_TYPE_PUTAWAY = 2;
+  INVENTORY_OPERATION_TYPE_PICKING = 3;
+  INVENTORY_OPERATION_TYPE_PACKING = 4;
+  INVENTORY_OPERATION_TYPE_SHIPPING = 5;
+  INVENTORY_OPERATION_TYPE_RETURN = 6;
+  INVENTORY_OPERATION_TYPE_ADJUSTMENT = 7;
+  INVENTORY_OPERATION_TYPE_TRANSFER = 8;
+  INVENTORY_OPERATION_TYPE_CYCLE_COUNT = 9;
+}

@@ -1,0 +1,69 @@
+syntax = "proto3";
+
+package proto.scg.notification.warehouse.models;
+
+import "proto/scg/warehouse/v1/enums.proto";
+import "google/protobuf/timestamp.proto";
+
+option go_package = "github.com/next-trace/scg-notification-contracts/gen/go/proto/scg/warehouse/v1;warehousev1";
+
+// Warehouse represents a warehouse in the system
+message Warehouse {
+  string id = 1 [json_name = "id"];
+  string name = 2 [json_name = "name"];
+  string code = 3 [json_name = "code"];
+  string address = 4 [json_name = "address"];
+  string city = 5 [json_name = "city"];
+  string state = 6 [json_name = "state"];
+  string country = 7 [json_name = "country"];
+  string postal_code = 8 [json_name = "postal_code"];
+  proto.scg.notification.warehouse.enums.WarehouseStatus status = 9 [json_name = "status"];
+  proto.scg.notification.warehouse.enums.WarehouseType type = 10 [json_name = "type"];
+  float total_capacity = 11 [json_name = "total_capacity"];
+  float available_capacity = 12 [json_name = "available_capacity"];
+  float utilization_percentage = 13 [json_name = "utilization_percentage"];
+  string manager_id = 14 [json_name = "manager_id"];
+  string manager_name = 15 [json_name = "manager_name"];
+  google.protobuf.Timestamp created_at = 16 [json_name = "created_at"];
+  google.protobuf.Timestamp updated_at = 17 [json_name = "updated_at"];
+  map<string, string> metadata = 18 [json_name = "metadata"];
+}
+
+// WarehouseZone represents a zone within a warehouse
+message WarehouseZone {
+  string id = 1 [json_name = "id"];
+  string warehouse_id = 2 [json_name = "warehouse_id"];
+  string name = 3 [json_name = "name"];
+  string code = 4 [json_name = "code"];
+  string description = 5 [json_name = "description"];
+  float capacity = 6 [json_name = "capacity"];
+  float available_capacity = 7 [json_name = "available_capacity"];
+  float utilization_percentage = 8 [json_name = "utilization_percentage"];
+  bool temperature_controlled = 9 [json_name = "temperature_controlled"];
+  float min_temperature = 10 [json_name = "min_temperature"];
+  float max_temperature = 11 [json_name = "max_temperature"];
+  google.protobuf.Timestamp created_at = 12 [json_name = "created_at"];
+  google.protobuf.Timestamp updated_at = 13 [json_name = "updated_at"];
+}
+
+// InventoryOperation represents an inventory operation in a warehouse
+message InventoryOperation {
+  string id = 1 [json_name = "id"];
+  string warehouse_id = 2 [json_name = "warehouse_id"];
+  string warehouse_name = 3 [json_name = "warehouse_name"];
+  string zone_id = 4 [json_name = "zone_id"];
+  string zone_name = 5 [json_name = "zone_name"];
+  proto.scg.notification.warehouse.enums.InventoryOperationType operation_type = 6 [json_name = "operation_type"];
+  string product_id = 7 [json_name = "product_id"];
+  string product_name = 8 [json_name = "product_name"];
+  string product_sku = 9 [json_name = "product_sku"];
+  float quantity = 10 [json_name = "quantity"];
+  string unit_of_measure = 11 [json_name = "unit_of_measure"];
+  string operator_id = 12 [json_name = "operator_id"];
+  string operator_name = 13 [json_name = "operator_name"];
+  string reference_id = 14 [json_name = "reference_id"];
+  string reference_type = 15 [json_name = "reference_type"];
+  string reason = 16 [json_name = "reason"];
+  google.protobuf.Timestamp operation_time = 17 [json_name = "operation_time"];
+  map<string, string> metadata = 18 [json_name = "metadata"];
+}

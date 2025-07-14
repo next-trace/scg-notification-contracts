@@ -1,0 +1,10 @@
+version: v1
+plugins:
+  # Standard Go plugin (managed remote) pinned for deterministic builds
+  - plugin: buf.build/protocolbuffers/go:v1.36.6
+    out: gen
+    opt: paths=import,module=github.com/next-trace/scg-notification-contracts/gen
+  # Go gRPC plugin (managed remote) pinned
+  - plugin: buf.build/grpc/go:v1.5.1
+    out: gen
+    opt: paths=import,module=github.com/next-trace/scg-notification-contracts/gen,require_unimplemented_servers=false

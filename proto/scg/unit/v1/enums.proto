@@ -1,0 +1,49 @@
+syntax = "proto3";
+
+package proto.scg.notification.unit.enums;
+
+option go_package = "github.com/next-trace/scg-notification-contracts/gen/go/proto/scg/unit/v1;unitv1";
+
+// UnitStatus represents the status of a unit
+enum UnitStatus {
+  UNIT_STATUS_UNSPECIFIED = 0;
+  UNIT_STATUS_CREATED = 1;
+  UNIT_STATUS_ACTIVE = 2;
+  UNIT_STATUS_INACTIVE = 3;
+  UNIT_STATUS_SUSPENDED = 4;
+  UNIT_STATUS_ARCHIVED = 5;
+}
+
+// UnitType represents the type of unit
+enum UnitType {
+  UNIT_TYPE_UNSPECIFIED = 0;
+  UNIT_TYPE_INDIVIDUAL = 1;
+  UNIT_TYPE_BATCH = 2;
+  UNIT_TYPE_LOT = 3;
+  UNIT_TYPE_CONTAINER = 4;
+  UNIT_TYPE_PALLET = 5;
+  UNIT_TYPE_PACKAGE = 6;
+  UNIT_TYPE_CASE = 7;
+  UNIT_TYPE_BOX = 8;
+}
+
+// UnitMeasurementSystem represents the measurement system for a unit
+enum UnitMeasurementSystem {
+  UNIT_MEASUREMENT_SYSTEM_UNSPECIFIED = 0;
+  UNIT_MEASUREMENT_SYSTEM_METRIC = 1;
+  UNIT_MEASUREMENT_SYSTEM_IMPERIAL = 2;
+  UNIT_MEASUREMENT_SYSTEM_US_CUSTOMARY = 3;
+}
+
+// UnitCondition represents the condition of a unit
+enum UnitCondition {
+  UNIT_CONDITION_UNSPECIFIED = 0;
+  UNIT_CONDITION_NEW = 1;
+  UNIT_CONDITION_GOOD = 2;
+  UNIT_CONDITION_FAIR = 3;
+  UNIT_CONDITION_POOR = 4;
+  UNIT_CONDITION_DAMAGED = 5;
+  UNIT_CONDITION_DEFECTIVE = 6;
+  UNIT_CONDITION_EXPIRED = 7;
+  UNIT_CONDITION_RECALLED = 8;
+}

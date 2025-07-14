@@ -1,0 +1,31 @@
+syntax = "proto3";
+
+package proto.scg.notification.onboarding.models;
+
+import "proto/scg/onboarding/v1/enums.proto";
+import "google/protobuf/timestamp.proto";
+
+option go_package = "github.com/next-trace/scg-notification-contracts/gen/go/proto/scg/onboarding/v1;onboardingv1";
+
+// OnboardingWorkflow represents an onboarding workflow for a partner
+message OnboardingWorkflow {
+  string uuid = 1 [json_name = "uuid"];
+  string partner_uuid = 2 [json_name = "partner_uuid"];
+  string partner_name = 3 [json_name = "partner_name"];
+  proto.scg.notification.onboarding.enums.OnboardingStatus status = 4 [json_name = "status"];
+  google.protobuf.Timestamp started_at = 5 [json_name = "started_at"];
+  google.protobuf.Timestamp completed_at = 6 [json_name = "completed_at"];
+  repeated OnboardingStep steps = 7 [json_name = "steps"];
+}
+
+// OnboardingStep represents a step in the onboarding workflow
+message OnboardingStep {
+  string uuid = 1 [json_name = "uuid"];
+  string workflow_uuid = 2 [json_name = "workflow_uuid"];
+  string name = 3 [json_name = "name"];
+  string description = 4 [json_name = "description"];
+  proto.scg.notification.onboarding.enums.OnboardingStepStatus status = 5 [json_name = "status"];
+  google.protobuf.Timestamp started_at = 6 [json_name = "started_at"];
+  google.protobuf.Timestamp completed_at = 7 [json_name = "completed_at"];
+  int32 order = 8 [json_name = "order"];
+}

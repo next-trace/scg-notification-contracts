@@ -1,0 +1,37 @@
+syntax = "proto3";
+
+package proto.scg.notification.logistics.enums;
+
+option go_package = "github.com/next-trace/scg-notification-contracts/gen/go/proto/scg/logistics/v1;logisticsv1";
+
+// ConsignmentStatus represents the status of a consignment
+enum ConsignmentStatus {
+  CONSIGNMENT_STATUS_UNSPECIFIED = 0;
+  CONSIGNMENT_STATUS_CREATED = 1;
+  CONSIGNMENT_STATUS_BOOKED = 2;
+  CONSIGNMENT_STATUS_IN_TRANSIT = 3;
+  CONSIGNMENT_STATUS_ARRIVED = 4;
+  CONSIGNMENT_STATUS_DELIVERED = 5;
+  CONSIGNMENT_STATUS_DELAYED = 6;
+  CONSIGNMENT_STATUS_CANCELLED = 7;
+}
+
+// TransportMode represents the mode of transport
+enum TransportMode {
+  TRANSPORT_MODE_UNSPECIFIED = 0;
+  TRANSPORT_MODE_ROAD = 1;
+  TRANSPORT_MODE_RAIL = 2;
+  TRANSPORT_MODE_SEA = 3;
+  TRANSPORT_MODE_AIR = 4;
+  TRANSPORT_MODE_MULTIMODAL = 5;
+}
+
+// ShipmentType represents the type of shipment
+enum ShipmentType {
+  SHIPMENT_TYPE_UNSPECIFIED = 0;
+  SHIPMENT_TYPE_FCL = 1;
+  SHIPMENT_TYPE_LCL = 2;
+  SHIPMENT_TYPE_BULK = 3;
+  SHIPMENT_TYPE_BREAKBULK = 4;
+  SHIPMENT_TYPE_RORO = 5;
+}

@@ -1,0 +1,83 @@
+syntax = "proto3";
+
+package proto.scg.notification.custody.events;
+
+import "proto/scg/shared/v1/events.proto";
+import "google/protobuf/timestamp.proto";
+
+option go_package = "github.com/next-trace/scg-notification-contracts/gen/go/proto/scg/custody/v1;custodyv1";
+
+// CustodyInitiatedNotification is sent when a custody transfer is initiated
+message CustodyInitiatedNotification {
+  proto.scg.notification.shared.events.NotificationEvent base = 1 [json_name = "base"];
+  string custody_id = 2 [json_name = "custody_id"];
+  string custody_reference = 3 [json_name = "custody_reference"];
+  string entity_id = 4 [json_name = "entity_id"];
+  string entity_type = 5 [json_name = "entity_type"];
+  string transferor_id = 6 [json_name = "transferor_id"];
+  string transferor_name = 7 [json_name = "transferor_name"];
+  string transferee_id = 8 [json_name = "transferee_id"];
+  string transferee_name = 9 [json_name = "transferee_name"];
+  string custody_type = 10 [json_name = "custody_type"];
+  string location = 11 [json_name = "location"];
+  google.protobuf.Timestamp initiated_at = 12 [json_name = "initiated_at"];
+}
+
+// CustodyTransferredNotification is sent when custody is transferred
+message CustodyTransferredNotification {
+  proto.scg.notification.shared.events.NotificationEvent base = 1 [json_name = "base"];
+  string custody_id = 2 [json_name = "custody_id"];
+  string custody_reference = 3 [json_name = "custody_reference"];
+  string entity_id = 4 [json_name = "entity_id"];
+  string entity_type = 5 [json_name = "entity_type"];
+  string transferor_id = 6 [json_name = "transferor_id"];
+  string transferor_name = 7 [json_name = "transferor_name"];
+  string transferee_id = 8 [json_name = "transferee_id"];
+  string transferee_name = 9 [json_name = "transferee_name"];
+  string verification_method = 10 [json_name = "verification_method"];
+  string location = 11 [json_name = "location"];
+  google.protobuf.Timestamp transferred_at = 12 [json_name = "transferred_at"];
+}
+
+// CustodyReceivedNotification is sent when custody is received
+message CustodyReceivedNotification {
+  proto.scg.notification.shared.events.NotificationEvent base = 1 [json_name = "base"];
+  string custody_id = 2 [json_name = "custody_id"];
+  string custody_reference = 3 [json_name = "custody_reference"];
+  string entity_id = 4 [json_name = "entity_id"];
+  string entity_type = 5 [json_name = "entity_type"];
+  string transferor_id = 6 [json_name = "transferor_id"];
+  string transferor_name = 7 [json_name = "transferor_name"];
+  string transferee_id = 8 [json_name = "transferee_id"];
+  string transferee_name = 9 [json_name = "transferee_name"];
+  string location = 10 [json_name = "location"];
+  google.protobuf.Timestamp received_at = 11 [json_name = "received_at"];
+}
+
+// CustodyRejectedNotification is sent when custody transfer is rejected
+message CustodyRejectedNotification {
+  proto.scg.notification.shared.events.NotificationEvent base = 1 [json_name = "base"];
+  string custody_id = 2 [json_name = "custody_id"];
+  string custody_reference = 3 [json_name = "custody_reference"];
+  string entity_id = 4 [json_name = "entity_id"];
+  string entity_type = 5 [json_name = "entity_type"];
+  string transferor_id = 6 [json_name = "transferor_id"];
+  string transferor_name = 7 [json_name = "transferor_name"];
+  string transferee_id = 8 [json_name = "transferee_id"];
+  string transferee_name = 9 [json_name = "transferee_name"];
+  string reason = 10 [json_name = "reason"];
+  string location = 11 [json_name = "location"];
+  google.protobuf.Timestamp rejected_at = 12 [json_name = "rejected_at"];
+}
+
+// CustodyEvidenceAddedNotification is sent when evidence is added to a custody record
+message CustodyEvidenceAddedNotification {
+  proto.scg.notification.shared.events.NotificationEvent base = 1 [json_name = "base"];
+  string custody_id = 2 [json_name = "custody_id"];
+  string custody_reference = 3 [json_name = "custody_reference"];
+  string evidence_id = 4 [json_name = "evidence_id"];
+  string evidence_type = 5 [json_name = "evidence_type"];
+  string added_by_id = 6 [json_name = "added_by_id"];
+  string added_by_name = 7 [json_name = "added_by_name"];
+  google.protobuf.Timestamp added_at = 8 [json_name = "added_at"];
+}

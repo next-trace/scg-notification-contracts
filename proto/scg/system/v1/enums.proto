@@ -1,0 +1,35 @@
+syntax = "proto3";
+
+package proto.scg.notification.system.enums;
+
+option go_package = "github.com/next-trace/scg-notification-contracts/gen/go/proto/scg/system/v1;systemv1";
+
+// MaintenanceType represents the type of system maintenance
+enum MaintenanceType {
+  MAINTENANCE_TYPE_UNSPECIFIED = 0;
+  MAINTENANCE_TYPE_PLANNED = 1;
+  MAINTENANCE_TYPE_EMERGENCY = 2;
+  MAINTENANCE_TYPE_UPGRADE = 3;
+  MAINTENANCE_TYPE_PATCH = 4;
+  MAINTENANCE_TYPE_SECURITY = 5;
+}
+
+// IntegrationType represents the type of integration
+enum IntegrationType {
+  INTEGRATION_TYPE_UNSPECIFIED = 0;
+  INTEGRATION_TYPE_API = 1;
+  INTEGRATION_TYPE_WEBHOOK = 2;
+  INTEGRATION_TYPE_FILE = 3;
+  INTEGRATION_TYPE_DATABASE = 4;
+  INTEGRATION_TYPE_MESSAGE_QUEUE = 5;
+}
+
+// SystemStatus represents the status of a system
+enum SystemStatus {
+  SYSTEM_STATUS_UNSPECIFIED = 0;
+  SYSTEM_STATUS_OPERATIONAL = 1;
+  SYSTEM_STATUS_DEGRADED = 2;
+  SYSTEM_STATUS_MAINTENANCE = 3;
+  SYSTEM_STATUS_OUTAGE = 4;
+  SYSTEM_STATUS_SECURITY_INCIDENT = 5;
+}

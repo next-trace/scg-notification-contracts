@@ -1,0 +1,40 @@
+syntax = "proto3";
+
+package proto.scg.notification.compliance.models;
+
+import "proto/scg/shared/v1/enums.proto";
+import "proto/scg/compliance/v1/enums.proto";
+import "google/protobuf/timestamp.proto";
+
+option go_package = "github.com/next-trace/scg-notification-contracts/gen/go/proto/scg/compliance/v1;compliancev1";
+
+// ComplianceCheck represents a compliance check
+message ComplianceCheck {
+  string id = 1 [json_name = "id"];
+  string name = 2 [json_name = "name"];
+  string description = 3 [json_name = "description"];
+  proto.scg.notification.compliance.enums.ComplianceCheckType type = 4 [json_name = "type"];
+  proto.scg.notification.compliance.enums.ComplianceCheckStatus status = 5 [json_name = "status"];
+  repeated proto.scg.notification.compliance.enums.ComplianceRegulation regulations = 6 [json_name = "regulations"];
+  string entity_id = 7 [json_name = "entity_id"];
+  string entity_type = 8 [json_name = "entity_type"];
+  google.protobuf.Timestamp check_time = 9 [json_name = "check_time"];
+  google.protobuf.Timestamp next_check_time = 10 [json_name = "next_check_time"];
+  string failure_reason = 11 [json_name = "failure_reason"];
+  map<string, string> metadata = 12 [json_name = "metadata"];
+}
+
+// ComplianceViolation represents a compliance violation
+message ComplianceViolation {
+  string id = 1 [json_name = "id"];
+  string compliance_check_id = 2 [json_name = "compliance_check_id"];
+  string entity_id = 3 [json_name = "entity_id"];
+  string entity_type = 4 [json_name = "entity_type"];
+  string violation_description = 5 [json_name = "violation_description"];
+  proto.scg.notification.compliance.enums.ComplianceRegulation regulation = 6 [json_name = "regulation"];
+  proto.scg.notification.shared.enums.NotificationSeverity severity = 7 [json_name = "severity"];
+  google.protobuf.Timestamp detected_at = 8 [json_name = "detected_at"];
+  google.protobuf.Timestamp resolved_at = 9 [json_name = "resolved_at"];
+  bool is_resolved = 10 [json_name = "is_resolved"];
+  string resolution_description = 11 [json_name = "resolution_description"];
+}

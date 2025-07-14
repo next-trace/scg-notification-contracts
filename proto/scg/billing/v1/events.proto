@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+package proto.scg.notification.billing.events;
+
+import "proto/scg/shared/v1/events.proto";
+
+option go_package = "github.com/next-trace/scg-notification-contracts/gen/go/proto/scg/billing/v1;billingv1";
+
+// BillingNotificationEvent is a placeholder for future billing notification events
+message BillingNotificationEvent {
+  proto.scg.notification.shared.events.NotificationEvent base = 1 [json_name = "base"];
+}

@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+package proto.scg.notification.security.events;
+
+import "proto/scg/shared/v1/events.proto";
+
+option go_package = "github.com/next-trace/scg-notification-contracts/gen/go/proto/scg/security/v1;securityv1";
+
+// SecurityNotificationEvent is a placeholder for future security notification events
+message SecurityNotificationEvent {
+  proto.scg.notification.shared.events.NotificationEvent base = 1 [json_name = "base"];
+}

@@ -1,0 +1,60 @@
+syntax = "proto3";
+
+package proto.scg.notification.event_log.models;
+
+import "proto/scg/event_log/v1/enums.proto";
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/struct.proto";
+
+option go_package = "github.com/next-trace/scg-notification-contracts/gen/go/proto/scg/event_log/v1;event_logv1";
+
+// EventLog represents an event log entry in the system
+message EventLog {
+  string id = 1 [json_name = "id"];
+  string event_type = 2 [json_name = "event_type"];
+  string source = 3 [json_name = "source"];
+  string actor_id = 4 [json_name = "actor_id"];
+  string actor_name = 5 [json_name = "actor_name"];
+  string entity_id = 6 [json_name = "entity_id"];
+  string entity_type = 7 [json_name = "entity_type"];
+  proto.scg.notification.event_log.enums.EventLogSeverity severity = 8 [json_name = "severity"];
+  proto.scg.notification.event_log.enums.EventLogCategory category = 9 [json_name = "category"];
+  proto.scg.notification.event_log.enums.EventLogStatus status = 10 [json_name = "status"];
+  string message = 11 [json_name = "message"];
+  google.protobuf.Struct details = 12 [json_name = "details"];
+  string trace_id = 13 [json_name = "trace_id"];
+  string correlation_id = 14 [json_name = "correlation_id"];
+  google.protobuf.Timestamp occurred_at = 15 [json_name = "occurred_at"];
+  google.protobuf.Timestamp recorded_at = 16 [json_name = "recorded_at"];
+  map<string, string> metadata = 17 [json_name = "metadata"];
+}
+
+// EventLogFilter represents a filter for querying event logs
+message EventLogFilter {
+  repeated string event_types = 1 [json_name = "event_types"];
+  repeated string sources = 2 [json_name = "sources"];
+  repeated string actor_ids = 3 [json_name = "actor_ids"];
+  repeated string entity_ids = 4 [json_name = "entity_ids"];
+  repeated string entity_types = 5 [json_name = "entity_types"];
+  repeated proto.scg.notification.event_log.enums.EventLogSeverity severities = 6 [json_name = "severities"];
+  repeated proto.scg.notification.event_log.enums.EventLogCategory categories = 7 [json_name = "categories"];
+  repeated proto.scg.notification.event_log.enums.EventLogStatus statuses = 8 [json_name = "statuses"];
+  google.protobuf.Timestamp from_date = 9 [json_name = "from_date"];
+  google.protobuf.Timestamp to_date = 10 [json_name = "to_date"];
+  string search_term = 11 [json_name = "search_term"];
+}
+
+// EventLogAggregation represents an aggregation of event logs
+message EventLogAggregation {
+  string id = 1 [json_name = "id"];
+  string name = 2 [json_name = "name"];
+  string description = 3 [json_name = "description"];
+  EventLogFilter filter = 4 [json_name = "filter"];
+  int32 count = 5 [json_name = "count"];
+  google.protobuf.Timestamp aggregation_period_start = 6 [json_name = "aggregation_period_start"];
+  google.protobuf.Timestamp aggregation_period_end = 7 [json_name = "aggregation_period_end"];
+  map<string, int32> breakdown_by_severity = 8 [json_name = "breakdown_by_severity"];
+  map<string, int32> breakdown_by_category = 9 [json_name = "breakdown_by_category"];
+  map<string, int32> breakdown_by_status = 10 [json_name = "breakdown_by_status"];
+  map<string, int32> breakdown_by_source = 11 [json_name = "breakdown_by_source"];
+}

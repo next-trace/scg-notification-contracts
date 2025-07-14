@@ -1,0 +1,75 @@
+syntax = "proto3";
+
+package proto.scg.notification.inventory.models;
+
+import "proto/scg/inventory/v1/enums.proto";
+import "google/protobuf/timestamp.proto";
+
+option go_package = "github.com/next-trace/scg-notification-contracts/gen/go/proto/scg/inventory/v1;inventoryv1";
+
+// InventoryItem represents an item in inventory
+message InventoryItem {
+  string id = 1 [json_name = "id"];
+  string sku = 2 [json_name = "sku"];
+  string product_id = 3 [json_name = "product_id"];
+  string product_name = 4 [json_name = "product_name"];
+  string description = 5 [json_name = "description"];
+  string location_id = 6 [json_name = "location_id"];
+  string location_name = 7 [json_name = "location_name"];
+  string owner_id = 8 [json_name = "owner_id"];
+  string owner_name = 9 [json_name = "owner_name"];
+  double quantity = 10 [json_name = "quantity"];
+  string unit_of_measure = 11 [json_name = "unit_of_measure"];
+  proto.scg.notification.inventory.enums.InventoryItemStatus status = 12 [json_name = "status"];
+  double minimum_stock_level = 13 [json_name = "minimum_stock_level"];
+  double maximum_stock_level = 14 [json_name = "maximum_stock_level"];
+  double reorder_point = 15 [json_name = "reorder_point"];
+  google.protobuf.Timestamp expiration_date = 16 [json_name = "expiration_date"];
+  google.protobuf.Timestamp manufacture_date = 17 [json_name = "manufacture_date"];
+  string batch_number = 18 [json_name = "batch_number"];
+  string lot_number = 19 [json_name = "lot_number"];
+  string serial_number = 20 [json_name = "serial_number"];
+  map<string, string> metadata = 21 [json_name = "metadata"];
+}
+
+// InventoryTransaction represents a transaction affecting inventory
+message InventoryTransaction {
+  string id = 1 [json_name = "id"];
+  string reference = 2 [json_name = "reference"];
+  proto.scg.notification.inventory.enums.InventoryTransactionType type = 3 [json_name = "type"];
+  string inventory_item_id = 4 [json_name = "inventory_item_id"];
+  string product_id = 5 [json_name = "product_id"];
+  string product_name = 6 [json_name = "product_name"];
+  string source_location_id = 7 [json_name = "source_location_id"];
+  string source_location_name = 8 [json_name = "source_location_name"];
+  string destination_location_id = 9 [json_name = "destination_location_id"];
+  string destination_location_name = 10 [json_name = "destination_location_name"];
+  double quantity = 11 [json_name = "quantity"];
+  string unit_of_measure = 12 [json_name = "unit_of_measure"];
+  string reason = 13 [json_name = "reason"];
+  string actor_id = 14 [json_name = "actor_id"];
+  string actor_name = 15 [json_name = "actor_name"];
+  google.protobuf.Timestamp transaction_date = 16 [json_name = "transaction_date"];
+  map<string, string> metadata = 17 [json_name = "metadata"];
+}
+
+// InventoryAlert represents an alert related to inventory
+message InventoryAlert {
+  string id = 1 [json_name = "id"];
+  proto.scg.notification.inventory.enums.InventoryAlertType type = 2 [json_name = "type"];
+  string inventory_item_id = 3 [json_name = "inventory_item_id"];
+  string product_id = 4 [json_name = "product_id"];
+  string product_name = 5 [json_name = "product_name"];
+  string location_id = 6 [json_name = "location_id"];
+  string location_name = 7 [json_name = "location_name"];
+  double current_quantity = 8 [json_name = "current_quantity"];
+  double threshold_quantity = 9 [json_name = "threshold_quantity"];
+  string unit_of_measure = 10 [json_name = "unit_of_measure"];
+  string message = 11 [json_name = "message"];
+  google.protobuf.Timestamp alert_date = 12 [json_name = "alert_date"];
+  bool is_resolved = 13 [json_name = "is_resolved"];
+  google.protobuf.Timestamp resolved_date = 14 [json_name = "resolved_date"];
+  string resolved_by_id = 15 [json_name = "resolved_by_id"];
+  string resolved_by_name = 16 [json_name = "resolved_by_name"];
+  string resolution_notes = 17 [json_name = "resolution_notes"];
+}

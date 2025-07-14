@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+package proto.scg.notification.shared.events;
+
+import "proto/scg/shared/v1/models.proto";
+import "google/protobuf/timestamp.proto";
+
+option go_package = "github.com/next-trace/scg-notification-contracts/gen/go/proto/scg/shared/v1;sharedv1";
+
+// NotificationEventEnvelope acts as event metadata for all notification events
+message NotificationEventEnvelope {
+  string event_uuid = 1 [json_name = "event_uuid"];
+  string event_type = 2 [json_name = "event_type"];
+  string actor_uuid = 3 [json_name = "actor_uuid"];
+  string trace_uuid = 4 [json_name = "trace_uuid"];
+  google.protobuf.Timestamp occurred_at = 5 [json_name = "occurred_at"];
+  int32 schema_version = 6 [json_name = "schema_version"];
+}
+
+// Base notification event that all specific notification events extend
+message NotificationEvent {
+  NotificationEventEnvelope envelope = 1 [json_name = "envelope"];
+  proto.scg.notification.shared.models.Notification notification = 2 [json_name = "notification"];
+}

@@ -1,0 +1,33 @@
+syntax = "proto3";
+
+package proto.scg.notification.system.events;
+
+import "proto/scg/shared/v1/events.proto";
+import "google/protobuf/timestamp.proto";
+
+option go_package = "github.com/next-trace/scg-notification-contracts/gen/go/proto/scg/system/v1;systemv1";
+
+// SystemMaintenanceNotification is sent for scheduled system maintenance
+message SystemMaintenanceNotification {
+  proto.scg.notification.shared.events.NotificationEvent base = 1 [json_name = "base"];
+  string maintenance_uuid = 2 [json_name = "maintenance_uuid"];
+  string maintenance_type = 3 [json_name = "maintenance_type"];
+  string description = 4 [json_name = "description"];
+  google.protobuf.Timestamp start_time = 5 [json_name = "start_time"];
+  google.protobuf.Timestamp end_time = 6 [json_name = "end_time"];
+  repeated string affected_services = 7 [json_name = "affected_services"];
+  bool requires_action = 8 [json_name = "requires_action"];
+  string action_description = 9 [json_name = "action_description"];
+}
+
+// IntegrationFailureNotification is sent when an integration fails
+message IntegrationFailureNotification {
+  proto.scg.notification.shared.events.NotificationEvent base = 1 [json_name = "base"];
+  string integration_uuid = 2 [json_name = "integration_uuid"];
+  string integration_name = 3 [json_name = "integration_name"];
+  string failure_reason = 4 [json_name = "failure_reason"];
+  string error_details = 5 [json_name = "error_details"];
+  int32 retry_count = 6 [json_name = "retry_count"];
+  google.protobuf.Timestamp failure_time = 7 [json_name = "failure_time"];
+  bool requires_manual_intervention = 8 [json_name = "requires_manual_intervention"];
+}

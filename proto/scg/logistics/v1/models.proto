@@ -1,0 +1,42 @@
+syntax = "proto3";
+
+package proto.scg.notification.logistics.models;
+
+import "proto/scg/logistics/v1/enums.proto";
+import "google/protobuf/timestamp.proto";
+
+option go_package = "github.com/next-trace/scg-notification-contracts/gen/go/proto/scg/logistics/v1;logisticsv1";
+
+// Consignment represents a consignment in the system
+message Consignment {
+  string id = 1 [json_name = "id"];
+  string reference = 2 [json_name = "reference"];
+  string origin = 3 [json_name = "origin"];
+  string destination = 4 [json_name = "destination"];
+  string shipper_id = 5 [json_name = "shipper_id"];
+  string shipper_name = 6 [json_name = "shipper_name"];
+  string consignee_id = 7 [json_name = "consignee_id"];
+  string consignee_name = 8 [json_name = "consignee_name"];
+  proto.scg.notification.logistics.enums.ConsignmentStatus status = 9 [json_name = "status"];
+  proto.scg.notification.logistics.enums.TransportMode transport_mode = 10 [json_name = "transport_mode"];
+  proto.scg.notification.logistics.enums.ShipmentType shipment_type = 11 [json_name = "shipment_type"];
+  google.protobuf.Timestamp estimated_departure = 12 [json_name = "estimated_departure"];
+  google.protobuf.Timestamp estimated_arrival = 13 [json_name = "estimated_arrival"];
+  google.protobuf.Timestamp actual_departure = 14 [json_name = "actual_departure"];
+  google.protobuf.Timestamp actual_arrival = 15 [json_name = "actual_arrival"];
+  bool on_time = 16 [json_name = "on_time"];
+  int32 delay_in_minutes = 17 [json_name = "delay_in_minutes"];
+  map<string, string> metadata = 18 [json_name = "metadata"];
+}
+
+// ConsignmentStatusChange represents a change in the status of a consignment
+message ConsignmentStatusChange {
+  string id = 1 [json_name = "id"];
+  string consignment_id = 2 [json_name = "consignment_id"];
+  string consignment_reference = 3 [json_name = "consignment_reference"];
+  proto.scg.notification.logistics.enums.ConsignmentStatus previous_status = 4 [json_name = "previous_status"];
+  proto.scg.notification.logistics.enums.ConsignmentStatus new_status = 5 [json_name = "new_status"];
+  string location = 6 [json_name = "location"];
+  string reason = 7 [json_name = "reason"];
+  google.protobuf.Timestamp status_changed_at = 8 [json_name = "status_changed_at"];
+}

@@ -1,0 +1,36 @@
+syntax = "proto3";
+
+package proto.scg.notification.risk.enums;
+
+option go_package = "github.com/next-trace/scg-notification-contracts/gen/go/proto/scg/risk/v1;riskv1";
+
+// RiskType represents the type of risk
+enum RiskType {
+  RISK_TYPE_UNSPECIFIED = 0;
+  RISK_TYPE_FINANCIAL = 1;
+  RISK_TYPE_OPERATIONAL = 2;
+  RISK_TYPE_COMPLIANCE = 3;
+  RISK_TYPE_STRATEGIC = 4;
+  RISK_TYPE_REPUTATIONAL = 5;
+  RISK_TYPE_SECURITY = 6;
+}
+
+// RiskLevel represents the level of risk
+enum RiskLevel {
+  RISK_LEVEL_UNSPECIFIED = 0;
+  RISK_LEVEL_LOW = 1;
+  RISK_LEVEL_MEDIUM = 2;
+  RISK_LEVEL_HIGH = 3;
+  RISK_LEVEL_CRITICAL = 4;
+}
+
+// RiskStatus represents the status of a risk
+enum RiskStatus {
+  RISK_STATUS_UNSPECIFIED = 0;
+  RISK_STATUS_IDENTIFIED = 1;
+  RISK_STATUS_ASSESSED = 2;
+  RISK_STATUS_MITIGATED = 3;
+  RISK_STATUS_ACCEPTED = 4;
+  RISK_STATUS_TRANSFERRED = 5;
+  RISK_STATUS_AVOIDED = 6;
+}

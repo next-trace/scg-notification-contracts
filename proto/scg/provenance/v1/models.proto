@@ -1,0 +1,90 @@
+syntax = "proto3";
+
+package proto.scg.notification.provenance.models;
+
+import "proto/scg/provenance/v1/enums.proto";
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/struct.proto";
+
+option go_package = "github.com/next-trace/scg-notification-contracts/gen/go/proto/scg/provenance/v1;provenancev1";
+
+// ProvenanceRecord represents a record of provenance for an entity
+message ProvenanceRecord {
+  string id = 1 [json_name = "id"];
+  string entity_id = 2 [json_name = "entity_id"];
+  string entity_type = 3 [json_name = "entity_type"];
+  proto.scg.notification.provenance.enums.ProvenanceRecordType record_type = 4 [json_name = "record_type"];
+  proto.scg.notification.provenance.enums.ProvenanceRecordStatus status = 5 [json_name = "status"];
+  string location = 6 [json_name = "location"];
+  string actor_id = 7 [json_name = "actor_id"];
+  string actor_name = 8 [json_name = "actor_name"];
+  string organization_id = 9 [json_name = "organization_id"];
+  string organization_name = 10 [json_name = "organization_name"];
+  string description = 11 [json_name = "description"];
+  google.protobuf.Struct data = 12 [json_name = "data"];
+  repeated string evidence_urls = 13 [json_name = "evidence_urls"];
+  proto.scg.notification.provenance.enums.ProvenanceVerificationMethod verification_method = 14 [json_name = "verification_method"];
+  string verifier_id = 15 [json_name = "verifier_id"];
+  string verifier_name = 16 [json_name = "verifier_name"];
+  google.protobuf.Timestamp verified_at = 17 [json_name = "verified_at"];
+  string verification_notes = 18 [json_name = "verification_notes"];
+  google.protobuf.Timestamp occurred_at = 19 [json_name = "occurred_at"];
+  google.protobuf.Timestamp recorded_at = 20 [json_name = "recorded_at"];
+  string previous_record_id = 21 [json_name = "previous_record_id"];
+  string next_record_id = 22 [json_name = "next_record_id"];
+  map<string, string> metadata = 23 [json_name = "metadata"];
+}
+
+// ProvenanceChain represents a chain of provenance records for an entity
+message ProvenanceChain {
+  string id = 1 [json_name = "id"];
+  string entity_id = 2 [json_name = "entity_id"];
+  string entity_type = 3 [json_name = "entity_type"];
+  repeated string record_ids = 4 [json_name = "record_ids"];
+  bool is_complete = 5 [json_name = "is_complete"];
+  bool is_verified = 6 [json_name = "is_verified"];
+  google.protobuf.Timestamp created_at = 7 [json_name = "created_at"];
+  google.protobuf.Timestamp last_updated_at = 8 [json_name = "last_updated_at"];
+  map<string, string> metadata = 9 [json_name = "metadata"];
+}
+
+// ProvenanceDispute represents a dispute against a provenance record
+message ProvenanceDispute {
+  string id = 1 [json_name = "id"];
+  string provenance_record_id = 2 [json_name = "provenance_record_id"];
+  string entity_id = 3 [json_name = "entity_id"];
+  string entity_type = 4 [json_name = "entity_type"];
+  string disputant_id = 5 [json_name = "disputant_id"];
+  string disputant_name = 6 [json_name = "disputant_name"];
+  string disputant_organization_id = 7 [json_name = "disputant_organization_id"];
+  string disputant_organization_name = 8 [json_name = "disputant_organization_name"];
+  proto.scg.notification.provenance.enums.ProvenanceDisputeReason reason = 9 [json_name = "reason"];
+  string description = 10 [json_name = "description"];
+  repeated string evidence_urls = 11 [json_name = "evidence_urls"];
+  string status = 12 [json_name = "status"];
+  string resolution = 13 [json_name = "resolution"];
+  string resolver_id = 14 [json_name = "resolver_id"];
+  string resolver_name = 15 [json_name = "resolver_name"];
+  google.protobuf.Timestamp disputed_at = 16 [json_name = "disputed_at"];
+  google.protobuf.Timestamp resolved_at = 17 [json_name = "resolved_at"];
+}
+
+// ProvenanceCertification represents a certification related to provenance
+message ProvenanceCertification {
+  string id = 1 [json_name = "id"];
+  string entity_id = 2 [json_name = "entity_id"];
+  string entity_type = 3 [json_name = "entity_type"];
+  string certification_type = 4 [json_name = "certification_type"];
+  string certification_name = 5 [json_name = "certification_name"];
+  string issuer_id = 6 [json_name = "issuer_id"];
+  string issuer_name = 7 [json_name = "issuer_name"];
+  string certificate_url = 8 [json_name = "certificate_url"];
+  string certificate_id = 9 [json_name = "certificate_id"];
+  google.protobuf.Timestamp issued_at = 10 [json_name = "issued_at"];
+  google.protobuf.Timestamp valid_until = 11 [json_name = "valid_until"];
+  bool is_verified = 12 [json_name = "is_verified"];
+  string verifier_id = 13 [json_name = "verifier_id"];
+  string verifier_name = 14 [json_name = "verifier_name"];
+  google.protobuf.Timestamp verified_at = 15 [json_name = "verified_at"];
+  map<string, string> metadata = 16 [json_name = "metadata"];
+}

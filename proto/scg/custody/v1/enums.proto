@@ -1,0 +1,34 @@
+syntax = "proto3";
+
+package proto.scg.notification.custody.enums;
+
+option go_package = "github.com/next-trace/scg-notification-contracts/gen/go/proto/scg/custody/v1;custodyv1";
+
+// CustodyStatus represents the status of a custody record
+enum CustodyStatus {
+  CUSTODY_STATUS_UNSPECIFIED = 0;
+  CUSTODY_STATUS_INITIATED = 1;
+  CUSTODY_STATUS_TRANSFERRED = 2;
+  CUSTODY_STATUS_RECEIVED = 3;
+  CUSTODY_STATUS_REJECTED = 4;
+  CUSTODY_STATUS_CANCELLED = 5;
+}
+
+// CustodyType represents the type of custody transfer
+enum CustodyType {
+  CUSTODY_TYPE_UNSPECIFIED = 0;
+  CUSTODY_TYPE_PHYSICAL = 1;
+  CUSTODY_TYPE_DIGITAL = 2;
+  CUSTODY_TYPE_LEGAL = 3;
+}
+
+// CustodyVerificationMethod represents the method used to verify custody transfer
+enum CustodyVerificationMethod {
+  CUSTODY_VERIFICATION_METHOD_UNSPECIFIED = 0;
+  CUSTODY_VERIFICATION_METHOD_SIGNATURE = 1;
+  CUSTODY_VERIFICATION_METHOD_BIOMETRIC = 2;
+  CUSTODY_VERIFICATION_METHOD_DIGITAL_SIGNATURE = 3;
+  CUSTODY_VERIFICATION_METHOD_PHOTO = 4;
+  CUSTODY_VERIFICATION_METHOD_BARCODE_SCAN = 5;
+  CUSTODY_VERIFICATION_METHOD_RFID = 6;
+}

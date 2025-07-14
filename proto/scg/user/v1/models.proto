@@ -1,0 +1,29 @@
+syntax = "proto3";
+
+package proto.scg.notification.user.models;
+
+import "proto/scg/shared/v1/enums.proto";
+import "google/protobuf/timestamp.proto";
+
+option go_package = "github.com/next-trace/scg-notification-contracts/gen/go/proto/scg/user/v1;userv1";
+
+// UserNotification represents a notification for a specific user
+message UserNotification {
+  string uuid = 1 [json_name = "uuid"];
+  string notification_uuid = 2 [json_name = "notification_uuid"];
+  string user_uuid = 3 [json_name = "user_uuid"];
+  bool is_read = 4 [json_name = "is_read"];
+  google.protobuf.Timestamp read_at = 5 [json_name = "read_at"];
+  bool is_archived = 6 [json_name = "is_archived"];
+  google.protobuf.Timestamp archived_at = 7 [json_name = "archived_at"];
+}
+
+// NotificationPreference represents a user's preferences for receiving notifications
+message NotificationPreference {
+  string user_uuid = 1 [json_name = "user_uuid"];
+  proto.scg.notification.shared.enums.NotificationCategory category = 2 [json_name = "category"];
+  proto.scg.notification.shared.enums.NotificationType type = 3 [json_name = "type"];
+  repeated proto.scg.notification.shared.enums.DeliveryChannel enabled_channels = 4 [json_name = "enabled_channels"];
+  bool is_opted_out = 5 [json_name = "is_opted_out"];
+  google.protobuf.Timestamp updated_at = 6 [json_name = "updated_at"];
+}

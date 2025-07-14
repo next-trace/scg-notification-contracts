@@ -1,0 +1,70 @@
+syntax = "proto3";
+
+package proto.scg.notification.consignment.events;
+
+import "proto/scg/shared/v1/events.proto";
+import "google/protobuf/timestamp.proto";
+
+option go_package = "github.com/next-trace/scg-notification-contracts/gen/go/proto/scg/consignment/v1;consignmentv1";
+
+// ConsignmentCreatedNotification is sent when a new consignment is created
+message ConsignmentCreatedNotification {
+  proto.scg.notification.shared.events.NotificationEvent base = 1 [json_name = "base"];
+  string consignment_id = 2 [json_name = "consignment_id"];
+  string consignment_reference = 3 [json_name = "consignment_reference"];
+  string origin = 4 [json_name = "origin"];
+  string destination = 5 [json_name = "destination"];
+  string shipper_id = 6 [json_name = "shipper_id"];
+  string shipper_name = 7 [json_name = "shipper_name"];
+  string consignee_id = 8 [json_name = "consignee_id"];
+  string consignee_name = 9 [json_name = "consignee_name"];
+  google.protobuf.Timestamp estimated_departure = 10 [json_name = "estimated_departure"];
+  google.protobuf.Timestamp estimated_arrival = 11 [json_name = "estimated_arrival"];
+}
+
+// ConsignmentStatusChangedNotification is sent when a consignment's status changes
+message ConsignmentStatusChangedNotification {
+  proto.scg.notification.shared.events.NotificationEvent base = 1 [json_name = "base"];
+  string consignment_id = 2 [json_name = "consignment_id"];
+  string consignment_reference = 3 [json_name = "consignment_reference"];
+  string previous_status = 4 [json_name = "previous_status"];
+  string new_status = 5 [json_name = "new_status"];
+  string location = 6 [json_name = "location"];
+  string reason = 7 [json_name = "reason"];
+  google.protobuf.Timestamp status_changed_at = 8 [json_name = "status_changed_at"];
+}
+
+// ConsignmentArrivedNotification is sent when a consignment arrives at its destination
+message ConsignmentArrivedNotification {
+  proto.scg.notification.shared.events.NotificationEvent base = 1 [json_name = "base"];
+  string consignment_id = 2 [json_name = "consignment_id"];
+  string consignment_reference = 3 [json_name = "consignment_reference"];
+  string destination = 4 [json_name = "destination"];
+  string recipient_id = 5 [json_name = "recipient_id"];
+  string recipient_name = 6 [json_name = "recipient_name"];
+  google.protobuf.Timestamp arrival_time = 7 [json_name = "arrival_time"];
+  bool on_time = 8 [json_name = "on_time"];
+  int32 delay_in_minutes = 9 [json_name = "delay_in_minutes"];
+}
+
+// ConsignmentDelayedNotification is sent when a consignment is delayed
+message ConsignmentDelayedNotification {
+  proto.scg.notification.shared.events.NotificationEvent base = 1 [json_name = "base"];
+  string consignment_id = 2 [json_name = "consignment_id"];
+  string consignment_reference = 3 [json_name = "consignment_reference"];
+  string current_location = 4 [json_name = "current_location"];
+  string reason = 5 [json_name = "reason"];
+  google.protobuf.Timestamp original_estimated_arrival = 6 [json_name = "original_estimated_arrival"];
+  google.protobuf.Timestamp new_estimated_arrival = 7 [json_name = "new_estimated_arrival"];
+  int32 delay_in_minutes = 8 [json_name = "delay_in_minutes"];
+}
+
+// ConsignmentDocumentationRequiredNotification is sent when documentation is required for a consignment
+message ConsignmentDocumentationRequiredNotification {
+  proto.scg.notification.shared.events.NotificationEvent base = 1 [json_name = "base"];
+  string consignment_id = 2 [json_name = "consignment_id"];
+  string consignment_reference = 3 [json_name = "consignment_reference"];
+  repeated string required_document_types = 4 [json_name = "required_document_types"];
+  string reason = 5 [json_name = "reason"];
+  google.protobuf.Timestamp deadline = 6 [json_name = "deadline"];
+}

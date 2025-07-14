@@ -1,0 +1,17 @@
+version: v1
+name: github.com/next-trace/scg-notification-contracts
+deps:
+  - buf.build/googleapis/googleapis
+lint:
+  use:
+    - STANDARD
+  except:
+    - PACKAGE_VERSION_SUFFIX
+    - SERVICE_SUFFIX
+    - PACKAGE_DIRECTORY_MATCH
+    - DIRECTORY_SAME_PACKAGE
+  ignore:
+    - protoc-vendor
+breaking:
+  use:
+    - FILE

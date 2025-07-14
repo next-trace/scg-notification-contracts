@@ -1,0 +1,55 @@
+syntax = "proto3";
+
+package proto.scg.notification.custody.models;
+
+import "proto/scg/custody/v1/enums.proto";
+import "google/protobuf/timestamp.proto";
+
+option go_package = "github.com/next-trace/scg-notification-contracts/gen/go/proto/scg/custody/v1;custodyv1";
+
+// CustodyRecord represents a record of custody transfer
+message CustodyRecord {
+  string id = 1 [json_name = "id"];
+  string reference = 2 [json_name = "reference"];
+  string entity_id = 3 [json_name = "entity_id"];
+  string entity_type = 4 [json_name = "entity_type"];
+  string transferor_id = 5 [json_name = "transferor_id"];
+  string transferor_name = 6 [json_name = "transferor_name"];
+  string transferee_id = 7 [json_name = "transferee_id"];
+  string transferee_name = 8 [json_name = "transferee_name"];
+  proto.scg.notification.custody.enums.CustodyStatus status = 9 [json_name = "status"];
+  proto.scg.notification.custody.enums.CustodyType type = 10 [json_name = "type"];
+  proto.scg.notification.custody.enums.CustodyVerificationMethod verification_method = 11 [json_name = "verification_method"];
+  string location = 12 [json_name = "location"];
+  google.protobuf.Timestamp initiated_at = 13 [json_name = "initiated_at"];
+  google.protobuf.Timestamp transferred_at = 14 [json_name = "transferred_at"];
+  google.protobuf.Timestamp received_at = 15 [json_name = "received_at"];
+  string notes = 16 [json_name = "notes"];
+  map<string, string> metadata = 17 [json_name = "metadata"];
+}
+
+// CustodyStatusChange represents a change in the status of a custody record
+message CustodyStatusChange {
+  string id = 1 [json_name = "id"];
+  string custody_record_id = 2 [json_name = "custody_record_id"];
+  string custody_reference = 3 [json_name = "custody_reference"];
+  proto.scg.notification.custody.enums.CustodyStatus previous_status = 4 [json_name = "previous_status"];
+  proto.scg.notification.custody.enums.CustodyStatus new_status = 5 [json_name = "new_status"];
+  string actor_id = 6 [json_name = "actor_id"];
+  string actor_name = 7 [json_name = "actor_name"];
+  string location = 8 [json_name = "location"];
+  string reason = 9 [json_name = "reason"];
+  google.protobuf.Timestamp status_changed_at = 10 [json_name = "status_changed_at"];
+}
+
+// CustodyEvidence represents evidence of a custody transfer
+message CustodyEvidence {
+  string id = 1 [json_name = "id"];
+  string custody_record_id = 2 [json_name = "custody_record_id"];
+  string evidence_type = 3 [json_name = "evidence_type"];
+  string evidence_url = 4 [json_name = "evidence_url"];
+  string description = 5 [json_name = "description"];
+  google.protobuf.Timestamp captured_at = 6 [json_name = "captured_at"];
+  string captured_by_id = 7 [json_name = "captured_by_id"];
+  string captured_by_name = 8 [json_name = "captured_by_name"];
+}

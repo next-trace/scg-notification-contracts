@@ -1,0 +1,37 @@
+syntax = "proto3";
+
+package proto.scg.notification.onboarding.events;
+
+import "proto/scg/shared/v1/events.proto";
+import "google/protobuf/timestamp.proto";
+
+option go_package = "github.com/next-trace/scg-notification-contracts/gen/go/proto/scg/onboarding/v1;onboardingv1";
+
+// PartnerOnboardingStartedNotification is sent when a partner begins the onboarding process
+message PartnerOnboardingStartedNotification {
+  proto.scg.notification.shared.events.NotificationEvent base = 1 [json_name = "base"];
+  string partner_uuid = 2 [json_name = "partner_uuid"];
+  string partner_name = 3 [json_name = "partner_name"];
+  string initiator_uuid = 4 [json_name = "initiator_uuid"];
+  string initiator_name = 5 [json_name = "initiator_name"];
+  string onboarding_workflow_uuid = 6 [json_name = "onboarding_workflow_uuid"];
+}
+
+// PartnerVettedNotification is sent when a partner passes vetting
+message PartnerVettedNotification {
+  proto.scg.notification.shared.events.NotificationEvent base = 1 [json_name = "base"];
+  string partner_uuid = 2 [json_name = "partner_uuid"];
+  string partner_name = 3 [json_name = "partner_name"];
+  string vetting_result = 4 [json_name = "vetting_result"];
+  string vetting_details = 5 [json_name = "vetting_details"];
+  google.protobuf.Timestamp vetting_completed_at = 6 [json_name = "vetting_completed_at"];
+}
+
+// PartnerOnboardingCompletedNotification is sent when a partner completes onboarding
+message PartnerOnboardingCompletedNotification {
+  proto.scg.notification.shared.events.NotificationEvent base = 1 [json_name = "base"];
+  string partner_uuid = 2 [json_name = "partner_uuid"];
+  string partner_name = 3 [json_name = "partner_name"];
+  string onboarding_workflow_uuid = 4 [json_name = "onboarding_workflow_uuid"];
+  google.protobuf.Timestamp completed_at = 5 [json_name = "completed_at"];
+}

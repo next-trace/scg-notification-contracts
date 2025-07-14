@@ -1,0 +1,38 @@
+syntax = "proto3";
+
+package proto.scg.notification.risk.models;
+
+import "proto/scg/risk/v1/enums.proto";
+import "google/protobuf/timestamp.proto";
+
+option go_package = "github.com/next-trace/scg-notification-contracts/gen/go/proto/scg/risk/v1;riskv1";
+
+// Risk represents a risk in the system
+message Risk {
+  string id = 1 [json_name = "id"];
+  string name = 2 [json_name = "name"];
+  string description = 3 [json_name = "description"];
+  proto.scg.notification.risk.enums.RiskType type = 4 [json_name = "type"];
+  proto.scg.notification.risk.enums.RiskLevel level = 5 [json_name = "level"];
+  proto.scg.notification.risk.enums.RiskStatus status = 6 [json_name = "status"];
+  double risk_score = 7 [json_name = "risk_score"];
+  double threshold = 8 [json_name = "threshold"];
+  string entity_id = 9 [json_name = "entity_id"];
+  string entity_type = 10 [json_name = "entity_type"];
+  google.protobuf.Timestamp identified_at = 11 [json_name = "identified_at"];
+  google.protobuf.Timestamp last_assessed_at = 12 [json_name = "last_assessed_at"];
+  string mitigation_plan = 13 [json_name = "mitigation_plan"];
+  map<string, string> metadata = 14 [json_name = "metadata"];
+}
+
+// RiskAssessment represents an assessment of a risk
+message RiskAssessment {
+  string id = 1 [json_name = "id"];
+  string risk_id = 2 [json_name = "risk_id"];
+  string assessor_id = 3 [json_name = "assessor_id"];
+  string assessor_name = 4 [json_name = "assessor_name"];
+  double previous_risk_score = 5 [json_name = "previous_risk_score"];
+  double new_risk_score = 6 [json_name = "new_risk_score"];
+  string assessment_notes = 7 [json_name = "assessment_notes"];
+  google.protobuf.Timestamp assessed_at = 8 [json_name = "assessed_at"];
+}

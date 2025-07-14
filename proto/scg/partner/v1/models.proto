@@ -1,0 +1,85 @@
+syntax = "proto3";
+
+package proto.scg.notification.partner.models;
+
+import "proto/scg/partner/v1/enums.proto";
+import "google/protobuf/timestamp.proto";
+
+option go_package = "github.com/next-trace/scg-notification-contracts/gen/go/proto/scg/partner/v1;partnerv1";
+
+// Partner represents a business partner in the system
+message Partner {
+  string id = 1 [json_name = "id"];
+  string name = 2 [json_name = "name"];
+  string legal_name = 3 [json_name = "legal_name"];
+  string tax_id = 4 [json_name = "tax_id"];
+  string registration_number = 5 [json_name = "registration_number"];
+  proto.scg.notification.partner.enums.PartnerType type = 6 [json_name = "type"];
+  proto.scg.notification.partner.enums.PartnerStatus status = 7 [json_name = "status"];
+  proto.scg.notification.partner.enums.PartnerTier tier = 8 [json_name = "tier"];
+  proto.scg.notification.partner.enums.PartnerVerificationStatus verification_status = 9 [json_name = "verification_status"];
+  string website = 10 [json_name = "website"];
+  string email = 11 [json_name = "email"];
+  string phone = 12 [json_name = "phone"];
+  string address_line1 = 13 [json_name = "address_line1"];
+  string address_line2 = 14 [json_name = "address_line2"];
+  string city = 15 [json_name = "city"];
+  string state = 16 [json_name = "state"];
+  string postal_code = 17 [json_name = "postal_code"];
+  string country = 18 [json_name = "country"];
+  string primary_contact_id = 19 [json_name = "primary_contact_id"];
+  string primary_contact_name = 20 [json_name = "primary_contact_name"];
+  string primary_contact_email = 21 [json_name = "primary_contact_email"];
+  string primary_contact_phone = 22 [json_name = "primary_contact_phone"];
+  google.protobuf.Timestamp onboarded_at = 23 [json_name = "onboarded_at"];
+  google.protobuf.Timestamp verified_at = 24 [json_name = "verified_at"];
+  google.protobuf.Timestamp last_updated_at = 25 [json_name = "last_updated_at"];
+  map<string, string> metadata = 26 [json_name = "metadata"];
+}
+
+// PartnerStatusChange represents a change in the status of a partner
+message PartnerStatusChange {
+  string id = 1 [json_name = "id"];
+  string partner_id = 2 [json_name = "partner_id"];
+  string partner_name = 3 [json_name = "partner_name"];
+  proto.scg.notification.partner.enums.PartnerStatus previous_status = 4 [json_name = "previous_status"];
+  proto.scg.notification.partner.enums.PartnerStatus new_status = 5 [json_name = "new_status"];
+  string reason = 6 [json_name = "reason"];
+  string actor_id = 7 [json_name = "actor_id"];
+  string actor_name = 8 [json_name = "actor_name"];
+  google.protobuf.Timestamp status_changed_at = 9 [json_name = "status_changed_at"];
+}
+
+// PartnerVerification represents a verification record for a partner
+message PartnerVerification {
+  string id = 1 [json_name = "id"];
+  string partner_id = 2 [json_name = "partner_id"];
+  string partner_name = 3 [json_name = "partner_name"];
+  proto.scg.notification.partner.enums.PartnerVerificationStatus status = 4 [json_name = "status"];
+  string verifier_id = 5 [json_name = "verifier_id"];
+  string verifier_name = 6 [json_name = "verifier_name"];
+  repeated string verification_documents = 7 [json_name = "verification_documents"];
+  string notes = 8 [json_name = "notes"];
+  google.protobuf.Timestamp verification_started_at = 9 [json_name = "verification_started_at"];
+  google.protobuf.Timestamp verification_completed_at = 10 [json_name = "verification_completed_at"];
+  map<string, string> verification_metadata = 11 [json_name = "verification_metadata"];
+}
+
+// PartnerAgreement represents an agreement with a partner
+message PartnerAgreement {
+  string id = 1 [json_name = "id"];
+  string partner_id = 2 [json_name = "partner_id"];
+  string partner_name = 3 [json_name = "partner_name"];
+  string agreement_type = 4 [json_name = "agreement_type"];
+  string agreement_name = 5 [json_name = "agreement_name"];
+  string agreement_document_url = 6 [json_name = "agreement_document_url"];
+  string status = 7 [json_name = "status"];
+  google.protobuf.Timestamp effective_date = 8 [json_name = "effective_date"];
+  google.protobuf.Timestamp expiration_date = 9 [json_name = "expiration_date"];
+  string signed_by_partner_id = 10 [json_name = "signed_by_partner_id"];
+  string signed_by_partner_name = 11 [json_name = "signed_by_partner_name"];
+  google.protobuf.Timestamp signed_by_partner_at = 12 [json_name = "signed_by_partner_at"];
+  string signed_by_company_id = 13 [json_name = "signed_by_company_id"];
+  string signed_by_company_name = 14 [json_name = "signed_by_company_name"];
+  google.protobuf.Timestamp signed_by_company_at = 15 [json_name = "signed_by_company_at"];
+}

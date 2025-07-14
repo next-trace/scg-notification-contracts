@@ -1,0 +1,96 @@
+syntax = "proto3";
+
+package proto.scg.notification.inventory.events;
+
+import "proto/scg/shared/v1/events.proto";
+import "proto/scg/inventory/v1/enums.proto";
+import "google/protobuf/timestamp.proto";
+
+option go_package = "github.com/next-trace/scg-notification-contracts/gen/go/proto/scg/inventory/v1;inventoryv1";
+
+// InventoryItemCreatedNotification is sent when a new inventory item is created
+message InventoryItemCreatedNotification {
+  proto.scg.notification.shared.events.NotificationEvent base = 1 [json_name = "base"];
+  string inventory_item_id = 2 [json_name = "inventory_item_id"];
+  string sku = 3 [json_name = "sku"];
+  string product_id = 4 [json_name = "product_id"];
+  string product_name = 5 [json_name = "product_name"];
+  string location_id = 6 [json_name = "location_id"];
+  string location_name = 7 [json_name = "location_name"];
+  double initial_quantity = 8 [json_name = "initial_quantity"];
+  string unit_of_measure = 9 [json_name = "unit_of_measure"];
+  string created_by_id = 10 [json_name = "created_by_id"];
+  string created_by_name = 11 [json_name = "created_by_name"];
+  google.protobuf.Timestamp created_at = 12 [json_name = "created_at"];
+}
+
+// InventoryLevelChangedNotification is sent when inventory levels change
+message InventoryLevelChangedNotification {
+  proto.scg.notification.shared.events.NotificationEvent base = 1 [json_name = "base"];
+  string inventory_item_id = 2 [json_name = "inventory_item_id"];
+  string sku = 3 [json_name = "sku"];
+  string product_id = 4 [json_name = "product_id"];
+  string product_name = 5 [json_name = "product_name"];
+  string location_id = 6 [json_name = "location_id"];
+  string location_name = 7 [json_name = "location_name"];
+  double previous_quantity = 8 [json_name = "previous_quantity"];
+  double new_quantity = 9 [json_name = "new_quantity"];
+  string unit_of_measure = 10 [json_name = "unit_of_measure"];
+  proto.scg.notification.inventory.enums.InventoryTransactionType transaction_type = 11 [json_name = "transaction_type"];
+  string transaction_id = 12 [json_name = "transaction_id"];
+  string actor_id = 13 [json_name = "actor_id"];
+  string actor_name = 14 [json_name = "actor_name"];
+  google.protobuf.Timestamp changed_at = 15 [json_name = "changed_at"];
+}
+
+// InventoryItemStatusChangedNotification is sent when an inventory item's status changes
+message InventoryItemStatusChangedNotification {
+  proto.scg.notification.shared.events.NotificationEvent base = 1 [json_name = "base"];
+  string inventory_item_id = 2 [json_name = "inventory_item_id"];
+  string sku = 3 [json_name = "sku"];
+  string product_id = 4 [json_name = "product_id"];
+  string product_name = 5 [json_name = "product_name"];
+  string location_id = 6 [json_name = "location_id"];
+  string location_name = 7 [json_name = "location_name"];
+  proto.scg.notification.inventory.enums.InventoryItemStatus previous_status = 8 [json_name = "previous_status"];
+  proto.scg.notification.inventory.enums.InventoryItemStatus new_status = 9 [json_name = "new_status"];
+  string reason = 10 [json_name = "reason"];
+  string actor_id = 11 [json_name = "actor_id"];
+  string actor_name = 12 [json_name = "actor_name"];
+  google.protobuf.Timestamp status_changed_at = 13 [json_name = "status_changed_at"];
+}
+
+// InventoryAlertNotification is sent when an inventory alert is triggered
+message InventoryAlertNotification {
+  proto.scg.notification.shared.events.NotificationEvent base = 1 [json_name = "base"];
+  string alert_id = 2 [json_name = "alert_id"];
+  proto.scg.notification.inventory.enums.InventoryAlertType alert_type = 3 [json_name = "alert_type"];
+  string inventory_item_id = 4 [json_name = "inventory_item_id"];
+  string sku = 5 [json_name = "sku"];
+  string product_id = 6 [json_name = "product_id"];
+  string product_name = 7 [json_name = "product_name"];
+  string location_id = 8 [json_name = "location_id"];
+  string location_name = 9 [json_name = "location_name"];
+  double current_quantity = 10 [json_name = "current_quantity"];
+  double threshold_quantity = 11 [json_name = "threshold_quantity"];
+  string unit_of_measure = 12 [json_name = "unit_of_measure"];
+  string message = 13 [json_name = "message"];
+  google.protobuf.Timestamp alert_triggered_at = 14 [json_name = "alert_triggered_at"];
+}
+
+// InventoryExpirationNotification is sent when inventory items are approaching expiration
+message InventoryExpirationNotification {
+  proto.scg.notification.shared.events.NotificationEvent base = 1 [json_name = "base"];
+  string inventory_item_id = 2 [json_name = "inventory_item_id"];
+  string sku = 3 [json_name = "sku"];
+  string product_id = 4 [json_name = "product_id"];
+  string product_name = 5 [json_name = "product_name"];
+  string location_id = 6 [json_name = "location_id"];
+  string location_name = 7 [json_name = "location_name"];
+  double quantity = 8 [json_name = "quantity"];
+  string unit_of_measure = 9 [json_name = "unit_of_measure"];
+  google.protobuf.Timestamp expiration_date = 10 [json_name = "expiration_date"];
+  int32 days_until_expiration = 11 [json_name = "days_until_expiration"];
+  string batch_number = 12 [json_name = "batch_number"];
+  string lot_number = 13 [json_name = "lot_number"];
+}
