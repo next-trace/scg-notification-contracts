@@ -119,3 +119,22 @@ Changes are tracked via Git tags and Git history. When available, see CHANGELOG.
 ---
 
 Focus: This repository is contract-first and stability-focused. Please run Buf checks and avoid breaking changes unless performing a planned MAJOR release.
+
+
+## Topics and Keys (N4)
+
+Topics:
+- Merchant notifications: scg.notifications.merchant.v1 (key = merchant_uuid)
+- Identity notifications: scg.notifications.identity.v1 (key = user_uuid or merchant_uuid)
+
+Event → Notification mapping (aligned with scg-contracts):
+- MerchantCreated → MerchantWelcomeRequested
+- MerchantSoftDeleted | MerchantHardDeleted → MerchantGoodbyeRequested
+- MerchantRestored | MerchantActivated → MerchantReactivatedRequested (optional)
+- UserCreated (invite flow) → UserInvitedRequested
+- UserDeleted → UserRemovedRequested
+
+PII Policy reminder:
+- Domain events MUST NOT contain PII.
+- Notification messages MAY carry presentation-friendly fields per policy.
+- Email addresses, when present, appear ONLY in notification messages and are optional (e.g., recipient_emails in MerchantWelcomeRequested).

@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package scg.common.v1;
+
+import "google/protobuf/timestamp.proto";
+
+option go_package = "github.com/next-trace/scg-notification-contracts/gen/go/proto/scg/common/v1;commonv1";
+
+message NotificationEnvelope {
+  string notification_uuid = 1 [json_name = "notification_uuid"]; // UUID v7 preferred
+  google.protobuf.Timestamp occurred_at = 2 [json_name = "occurred_at"];
+  string correlation_id = 3 [json_name = "correlation_id"];
+  string causation_id = 4 [json_name = "causation_id"];
+  string source_service = 5 [json_name = "source_service"];
+  string priority = 6 [json_name = "priority"];
+  string locale = 7 [json_name = "locale"];
+  map<string,string> attributes = 8 [json_name = "attributes"];
+}

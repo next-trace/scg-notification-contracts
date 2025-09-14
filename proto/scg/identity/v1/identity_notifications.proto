@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+package scg.identity.v1;
+
+import "proto/scg/common/v1/notification_common.proto";
+import "google/protobuf/timestamp.proto";
+
+option go_package = "github.com/next-trace/scg-notification-contracts/gen/go/proto/scg/identity/v1;identityv1";
+
+message UserInvitedRequested {
+  scg.common.v1.NotificationEnvelope meta = 1 [json_name = "meta"];
+  string merchant_uuid = 2 [json_name = "merchant_uuid"];
+  string user_uuid     = 3 [json_name = "user_uuid"];
+  string user_sub      = 4 [json_name = "user_sub"];        // identifier, not email
+  string invite_url    = 5 [json_name = "invite_url"];
+  google.protobuf.Timestamp expires_at = 6 [json_name = "expires_at"];
+  string template_hint = 7 [json_name = "template_hint"];
+}
+
+message UserRemovedRequested {
+  scg.common.v1.NotificationEnvelope meta = 1 [json_name = "meta"];
+  string merchant_uuid = 2 [json_name = "merchant_uuid"];
+  string user_uuid     = 3 [json_name = "user_uuid"];
+  string reason        = 4 [json_name = "reason"];
+  string template_hint = 5 [json_name = "template_hint"];
+}
