@@ -133,6 +133,7 @@ type UserRegisteredNotification struct {
 	OrganizationUuid string                 `protobuf:"bytes,4,opt,name=organization_uuid,proto3" json:"organization_uuid,omitempty"`
 	OrganizationName string                 `protobuf:"bytes,5,opt,name=organization_name,proto3" json:"organization_name,omitempty"`
 	Role             string                 `protobuf:"bytes,6,opt,name=role,proto3" json:"role,omitempty"`
+	UserEmail        string                 `protobuf:"bytes,7,opt,name=user_email,proto3" json:"user_email,omitempty"`
 	unknownFields    protoimpl.UnknownFields
 	sizeCache        protoimpl.SizeCache
 }
@@ -209,6 +210,13 @@ func (x *UserRegisteredNotification) GetRole() string {
 	return ""
 }
 
+func (x *UserRegisteredNotification) GetUserEmail() string {
+	if x != nil {
+		return x.UserEmail
+	}
+	return ""
+}
+
 var File_proto_scg_user_v1_events_proto protoreflect.FileDescriptor
 
 const file_proto_scg_user_v1_events_proto_rawDesc = "" +
@@ -222,14 +230,17 @@ const file_proto_scg_user_v1_events_proto_rawDesc = "" +
 	"\x11organization_uuid\x18\x05 \x01(\tR\x11organization_uuid\x12,\n" +
 	"\x11organization_name\x18\x06 \x01(\tR\x11organization_name\x12\x12\n" +
 	"\x04role\x18\a \x01(\tR\x04role\x12P\n" +
-	"\x15invitation_expires_at\x18\b \x01(\v2\x1a.google.protobuf.TimestampR\x15invitation_expires_at\"\x95\x02\n" +
+	"\x15invitation_expires_at\x18\b \x01(\v2\x1a.google.protobuf.TimestampR\x15invitation_expires_at\"\xb5\x02\n" +
 	"\x1aUserRegisteredNotification\x12K\n" +
 	"\x04base\x18\x01 \x01(\v27.proto.scg.notification.shared.events.NotificationEventR\x04base\x12\x1c\n" +
 	"\tuser_uuid\x18\x02 \x01(\tR\tuser_uuid\x12\x1c\n" +
 	"\tuser_name\x18\x03 \x01(\tR\tuser_name\x12,\n" +
 	"\x11organization_uuid\x18\x04 \x01(\tR\x11organization_uuid\x12,\n" +
 	"\x11organization_name\x18\x05 \x01(\tR\x11organization_name\x12\x12\n" +
-	"\x04role\x18\x06 \x01(\tR\x04roleBRZPgithub.com/next-trace/scg-notification-contracts/gen/go/proto/scg/user/v1;userv1b\x06proto3"
+	"\x04role\x18\x06 \x01(\tR\x04role\x12\x1e\n" +
+	"\n" +
+	"user_email\x18\a \x01(\tR\n" +
+	"user_emailBRZPgithub.com/next-trace/scg-notification-contracts/gen/go/proto/scg/user/v1;userv1b\x06proto3"
 
 var (
 	file_proto_scg_user_v1_events_proto_rawDescOnce sync.Once
