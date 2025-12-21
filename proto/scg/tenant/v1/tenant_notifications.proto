@@ -1,30 +1,30 @@
 syntax = "proto3";
 
-package scg.merchant.v1;
+package scg.tenant.v1;
 
 import "proto/scg/common/v1/notification_common.proto";
 
-option go_package = "github.com/next-trace/scg-notification-contracts/gen/go/proto/scg/merchant/v1;merchantv1";
+option go_package = "github.com/next-trace/scg-notification-contracts/gen/go/proto/scg/tenant/v1;tenantv1";
 
-message MerchantWelcomeRequested {
+message TenantWelcomeRequested {
   scg.common.v1.NotificationEnvelope meta = 1 [json_name = "meta"];
-  string merchant_uuid = 2 [json_name = "merchant_uuid"];
-  string merchant_key  = 3 [json_name = "merchant_key"];
+  string tenant_uuid = 2 [json_name = "tenant_uuid"];
+  string tenant_key  = 3 [json_name = "tenant_key"];
   repeated string recipient_emails = 4 [json_name = "recipient_emails"]; // optional per policy
   string template_hint = 5 [json_name = "template_hint"];
 }
 
-message MerchantGoodbyeRequested {
+message TenantGoodbyeRequested {
   scg.common.v1.NotificationEnvelope meta = 1 [json_name = "meta"];
-  string merchant_uuid = 2 [json_name = "merchant_uuid"];
-  string merchant_key  = 3 [json_name = "merchant_key"];
+  string tenant_uuid = 2 [json_name = "tenant_uuid"];
+  string tenant_key  = 3 [json_name = "tenant_key"];
   string reason        = 4 [json_name = "reason"];
   string template_hint = 5 [json_name = "template_hint"];
 }
 
-message MerchantReactivatedRequested {
+message TenantReactivatedRequested {
   scg.common.v1.NotificationEnvelope meta = 1 [json_name = "meta"];
-  string merchant_uuid = 2 [json_name = "merchant_uuid"];
-  string merchant_key  = 3 [json_name = "merchant_key"];
+  string tenant_uuid = 2 [json_name = "tenant_uuid"];
+  string tenant_key  = 3 [json_name = "tenant_key"];
   string template_hint = 4 [json_name = "template_hint"];
 }
