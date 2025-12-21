@@ -9,7 +9,7 @@ option go_package = "github.com/next-trace/scg-notification-contracts/gen/go/pro
 
 message UserInvitedRequested {
   scg.common.v1.NotificationEnvelope meta = 1 [json_name = "meta"];
-  string merchant_uuid = 2 [json_name = "merchant_uuid"];
+  string tenant_uuid = 2 [json_name = "tenant_uuid"];
   string user_uuid     = 3 [json_name = "user_uuid"];
   string user_sub      = 4 [json_name = "user_sub"];        // identifier, not email
   string invite_url    = 5 [json_name = "invite_url"];
@@ -19,7 +19,7 @@ message UserInvitedRequested {
 
 message UserRemovedRequested {
   scg.common.v1.NotificationEnvelope meta = 1 [json_name = "meta"];
-  string merchant_uuid = 2 [json_name = "merchant_uuid"];
+  string tenant_uuid = 2 [json_name = "tenant_uuid"];
   string user_uuid     = 3 [json_name = "user_uuid"];
   string reason        = 4 [json_name = "reason"];
   string template_hint = 5 [json_name = "template_hint"];

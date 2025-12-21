@@ -23,7 +23,7 @@ SCG emits domain events (e.g., compliance, logistics, custody). This repository 
 
 Key areas covered include:
 - Common envelope for notifications
-- Domain-specific notification messages (merchant, identity, event_log, etc.)
+- Domain-specific notification messages (tenant, identity, event_log, etc.)
 - Enums for channels, severity, categories, audiences, and statuses
 - Models for preferences, deliveries, digests, and core notifications
 
@@ -54,18 +54,18 @@ Important: JSON naming
 
 ## Go Usage Examples
 
-- Merchant welcome notification (publisher or tests)
+- Tenant welcome notification (publisher or tests)
 
 import (
-  merchantnotifs "github.com/next-trace/scg-notification-contracts/gen/go/proto/scg/merchant/v1"
+  tenantnotifs "github.com/next-trace/scg-notification-contracts/gen/go/proto/scg/tenant/v1"
   commonv1 "github.com/next-trace/scg-notification-contracts/gen/go/proto/scg/common/v1"
   "time"
 )
 
-evt := &merchantnotifs.MerchantWelcomeRequested{
+evt := &tenantnotifs.TenantWelcomeRequested{
   Meta: &commonv1.NotificationEnvelope{
     NotificationUuid: "018f3c6d-7aa0-7b0b-b728-58d6a3b68400", // v7 preferred
-    SourceService:    "merchant-service",
+    SourceService:    "tenant-service",
     CorrelationId:    "corr-123",
     CausationId:      "evt-abc",
     Priority:         "normal",
@@ -73,10 +73,10 @@ evt := &merchantnotifs.MerchantWelcomeRequested{
     OccurredAt:       timestamppb.New(time.Now()),
     Attributes:       map[string]string{"region": "us-east-1"},
   },
-  MerchantUuid:    "m-123",
-  MerchantKey:     "acme",
+  TenantUuid:    "m-123",
+  TenantKey:     "acme",
   RecipientEmails: []string{"owner@acme.test"},
-  TemplateHint:    "merchant_welcome_v1",
+  TemplateHint:    "tenant_welcome_v1",
 }
 
 - Identity invitation (publisher or tests)
@@ -89,7 +89,7 @@ import (
 
 inv := &identitynotifs.UserInvitedRequested{
   Meta:         &commonv1.NotificationEnvelope{ /* ... as above ... */ },
-  MerchantUuid: "m-123",
+  TenantUuid: "m-123",
   UserUuid:     "u-456",
   UserSub:      "auth0|abcdef",
   InviteUrl:    "https://console.scg.test/invite?token=...",
@@ -98,25 +98,25 @@ inv := &identitynotifs.UserInvitedRequested{
 }
 
 Routing reminder:
-- Merchant → topic: scg.notifications.merchant.v1, key: merchant_uuid
-- Identity → topic: scg.notifications.identity.v1, key: user_uuid or merchant_uuid
+- Tenant → topic: scg.notifications.tenant.v1, key: tenant_uuid
+- Identity → topic: scg.notifications.identity.v1, key: user_uuid or tenant_uuid
 
 ## Topics and Keys
 
-- Merchant notifications: scg.notifications.merchant.v1 (key = merchant_uuid)
-- Identity notifications: scg.notifications.identity.v1 (key = user_uuid or merchant_uuid)
+- Tenant notifications: scg.notifications.tenant.v1 (key = tenant_uuid)
+- Identity notifications: scg.notifications.identity.v1 (key = user_uuid or tenant_uuid)
 
 Event → Notification mapping (aligned with scg-contracts):
-- MerchantCreated → MerchantWelcomeRequested
-- MerchantSoftDeleted | MerchantHardDeleted → MerchantGoodbyeRequested
-- MerchantRestored | MerchantActivated → MerchantReactivatedRequested (optional)
+- TenantCreated → TenantWelcomeRequested
+- TenantSoftDeleted | TenantHardDeleted → TenantGoodbyeRequested
+- TenantRestored | TenantActivated → TenantReactivatedRequested (optional)
 - UserCreated (invite flow) → UserInvitedRequested
 - UserDeleted → UserRemovedRequested
 
 PII Policy
 - Domain events MUST NOT contain PII.
 - Notification messages MAY carry presentation-friendly fields where policy allows.
-- Emails appear ONLY in notifications and are optional (e.g., recipient_emails in MerchantWelcomeRequested).
+- Emails appear ONLY in notifications and are optional (e.g., recipient_emails in TenantWelcomeRequested).
 
 ## Compatibility and Change Management
 

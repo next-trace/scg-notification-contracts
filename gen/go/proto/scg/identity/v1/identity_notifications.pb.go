@@ -26,7 +26,7 @@ const (
 type UserInvitedRequested struct {
 	state         protoimpl.MessageState   `protogen:"open.v1"`
 	Meta          *v1.NotificationEnvelope `protobuf:"bytes,1,opt,name=meta,proto3" json:"meta,omitempty"`
-	MerchantUuid  string                   `protobuf:"bytes,2,opt,name=merchant_uuid,proto3" json:"merchant_uuid,omitempty"`
+	TenantUuid    string                   `protobuf:"bytes,2,opt,name=tenant_uuid,proto3" json:"tenant_uuid,omitempty"`
 	UserUuid      string                   `protobuf:"bytes,3,opt,name=user_uuid,proto3" json:"user_uuid,omitempty"`
 	UserSub       string                   `protobuf:"bytes,4,opt,name=user_sub,proto3" json:"user_sub,omitempty"` // identifier, not email
 	InviteUrl     string                   `protobuf:"bytes,5,opt,name=invite_url,proto3" json:"invite_url,omitempty"`
@@ -73,9 +73,9 @@ func (x *UserInvitedRequested) GetMeta() *v1.NotificationEnvelope {
 	return nil
 }
 
-func (x *UserInvitedRequested) GetMerchantUuid() string {
+func (x *UserInvitedRequested) GetTenantUuid() string {
 	if x != nil {
-		return x.MerchantUuid
+		return x.TenantUuid
 	}
 	return ""
 }
@@ -118,7 +118,7 @@ func (x *UserInvitedRequested) GetTemplateHint() string {
 type UserRemovedRequested struct {
 	state         protoimpl.MessageState   `protogen:"open.v1"`
 	Meta          *v1.NotificationEnvelope `protobuf:"bytes,1,opt,name=meta,proto3" json:"meta,omitempty"`
-	MerchantUuid  string                   `protobuf:"bytes,2,opt,name=merchant_uuid,proto3" json:"merchant_uuid,omitempty"`
+	TenantUuid    string                   `protobuf:"bytes,2,opt,name=tenant_uuid,proto3" json:"tenant_uuid,omitempty"`
 	UserUuid      string                   `protobuf:"bytes,3,opt,name=user_uuid,proto3" json:"user_uuid,omitempty"`
 	Reason        string                   `protobuf:"bytes,4,opt,name=reason,proto3" json:"reason,omitempty"`
 	TemplateHint  string                   `protobuf:"bytes,5,opt,name=template_hint,proto3" json:"template_hint,omitempty"`
@@ -163,9 +163,9 @@ func (x *UserRemovedRequested) GetMeta() *v1.NotificationEnvelope {
 	return nil
 }
 
-func (x *UserRemovedRequested) GetMerchantUuid() string {
+func (x *UserRemovedRequested) GetTenantUuid() string {
 	if x != nil {
-		return x.MerchantUuid
+		return x.TenantUuid
 	}
 	return ""
 }
@@ -195,10 +195,10 @@ var File_proto_scg_identity_v1_identity_notifications_proto protoreflect.FileDes
 
 const file_proto_scg_identity_v1_identity_notifications_proto_rawDesc = "" +
 	"\n" +
-	"2proto/scg/identity/v1/identity_notifications.proto\x12\x0fscg.identity.v1\x1a-proto/scg/common/v1/notification_common.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\xb1\x02\n" +
+	"2proto/scg/identity/v1/identity_notifications.proto\x12\x0fscg.identity.v1\x1a-proto/scg/common/v1/notification_common.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\xad\x02\n" +
 	"\x14UserInvitedRequested\x127\n" +
-	"\x04meta\x18\x01 \x01(\v2#.scg.common.v1.NotificationEnvelopeR\x04meta\x12$\n" +
-	"\rmerchant_uuid\x18\x02 \x01(\tR\rmerchant_uuid\x12\x1c\n" +
+	"\x04meta\x18\x01 \x01(\v2#.scg.common.v1.NotificationEnvelopeR\x04meta\x12 \n" +
+	"\vtenant_uuid\x18\x02 \x01(\tR\vtenant_uuid\x12\x1c\n" +
 	"\tuser_uuid\x18\x03 \x01(\tR\tuser_uuid\x12\x1a\n" +
 	"\buser_sub\x18\x04 \x01(\tR\buser_sub\x12\x1e\n" +
 	"\n" +
@@ -207,10 +207,10 @@ const file_proto_scg_identity_v1_identity_notifications_proto_rawDesc = "" +
 	"\n" +
 	"expires_at\x18\x06 \x01(\v2\x1a.google.protobuf.TimestampR\n" +
 	"expires_at\x12$\n" +
-	"\rtemplate_hint\x18\a \x01(\tR\rtemplate_hint\"\xd1\x01\n" +
+	"\rtemplate_hint\x18\a \x01(\tR\rtemplate_hint\"\xcd\x01\n" +
 	"\x14UserRemovedRequested\x127\n" +
-	"\x04meta\x18\x01 \x01(\v2#.scg.common.v1.NotificationEnvelopeR\x04meta\x12$\n" +
-	"\rmerchant_uuid\x18\x02 \x01(\tR\rmerchant_uuid\x12\x1c\n" +
+	"\x04meta\x18\x01 \x01(\v2#.scg.common.v1.NotificationEnvelopeR\x04meta\x12 \n" +
+	"\vtenant_uuid\x18\x02 \x01(\tR\vtenant_uuid\x12\x1c\n" +
 	"\tuser_uuid\x18\x03 \x01(\tR\tuser_uuid\x12\x16\n" +
 	"\x06reason\x18\x04 \x01(\tR\x06reason\x12$\n" +
 	"\rtemplate_hint\x18\x05 \x01(\tR\rtemplate_hintBZZXgithub.com/next-trace/scg-notification-contracts/gen/go/proto/scg/identity/v1;identityv1b\x06proto3"
