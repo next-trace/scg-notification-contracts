@@ -22,107 +22,97 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
-type TenantWelcomeRequested struct {
-	state           protoimpl.MessageState   `protogen:"open.v1"`
-	Meta            *v1.NotificationEnvelope `protobuf:"bytes,1,opt,name=meta,proto3" json:"meta,omitempty"`
-	TenantUuid      string                   `protobuf:"bytes,2,opt,name=tenant_uuid,proto3" json:"tenant_uuid,omitempty"`
-	TenantKey       string                   `protobuf:"bytes,3,opt,name=tenant_key,proto3" json:"tenant_key,omitempty"`
-	RecipientEmails []string                 `protobuf:"bytes,4,rep,name=recipient_emails,proto3" json:"recipient_emails,omitempty"` // optional per policy
-	TemplateHint    string                   `protobuf:"bytes,5,opt,name=template_hint,proto3" json:"template_hint,omitempty"`
-	unknownFields   protoimpl.UnknownFields
-	sizeCache       protoimpl.SizeCache
-}
-
-func (x *TenantWelcomeRequested) Reset() {
-	*x = TenantWelcomeRequested{}
-	mi := &file_proto_scg_tenant_v1_tenant_notifications_proto_msgTypes[0]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *TenantWelcomeRequested) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*TenantWelcomeRequested) ProtoMessage() {}
-
-func (x *TenantWelcomeRequested) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_scg_tenant_v1_tenant_notifications_proto_msgTypes[0]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use TenantWelcomeRequested.ProtoReflect.Descriptor instead.
-func (*TenantWelcomeRequested) Descriptor() ([]byte, []int) {
-	return file_proto_scg_tenant_v1_tenant_notifications_proto_rawDescGZIP(), []int{0}
-}
-
-func (x *TenantWelcomeRequested) GetMeta() *v1.NotificationEnvelope {
-	if x != nil {
-		return x.Meta
-	}
-	return nil
-}
-
-func (x *TenantWelcomeRequested) GetTenantUuid() string {
-	if x != nil {
-		return x.TenantUuid
-	}
-	return ""
-}
-
-func (x *TenantWelcomeRequested) GetTenantKey() string {
-	if x != nil {
-		return x.TenantKey
-	}
-	return ""
-}
-
-func (x *TenantWelcomeRequested) GetRecipientEmails() []string {
-	if x != nil {
-		return x.RecipientEmails
-	}
-	return nil
-}
-
-func (x *TenantWelcomeRequested) GetTemplateHint() string {
-	if x != nil {
-		return x.TemplateHint
-	}
-	return ""
-}
-
-type TenantGoodbyeRequested struct {
+type TenantCreated struct {
 	state         protoimpl.MessageState   `protogen:"open.v1"`
 	Meta          *v1.NotificationEnvelope `protobuf:"bytes,1,opt,name=meta,proto3" json:"meta,omitempty"`
-	TenantUuid    string                   `protobuf:"bytes,2,opt,name=tenant_uuid,proto3" json:"tenant_uuid,omitempty"`
+	TenantId      string                   `protobuf:"bytes,2,opt,name=tenant_id,proto3" json:"tenant_id,omitempty"`
 	TenantKey     string                   `protobuf:"bytes,3,opt,name=tenant_key,proto3" json:"tenant_key,omitempty"`
-	Reason        string                   `protobuf:"bytes,4,opt,name=reason,proto3" json:"reason,omitempty"`
-	TemplateHint  string                   `protobuf:"bytes,5,opt,name=template_hint,proto3" json:"template_hint,omitempty"`
+	Name          string                   `protobuf:"bytes,4,opt,name=name,proto3" json:"name,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *TenantGoodbyeRequested) Reset() {
-	*x = TenantGoodbyeRequested{}
+func (x *TenantCreated) Reset() {
+	*x = TenantCreated{}
+	mi := &file_proto_scg_tenant_v1_tenant_notifications_proto_msgTypes[0]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *TenantCreated) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*TenantCreated) ProtoMessage() {}
+
+func (x *TenantCreated) ProtoReflect() protoreflect.Message {
+	mi := &file_proto_scg_tenant_v1_tenant_notifications_proto_msgTypes[0]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use TenantCreated.ProtoReflect.Descriptor instead.
+func (*TenantCreated) Descriptor() ([]byte, []int) {
+	return file_proto_scg_tenant_v1_tenant_notifications_proto_rawDescGZIP(), []int{0}
+}
+
+func (x *TenantCreated) GetMeta() *v1.NotificationEnvelope {
+	if x != nil {
+		return x.Meta
+	}
+	return nil
+}
+
+func (x *TenantCreated) GetTenantId() string {
+	if x != nil {
+		return x.TenantId
+	}
+	return ""
+}
+
+func (x *TenantCreated) GetTenantKey() string {
+	if x != nil {
+		return x.TenantKey
+	}
+	return ""
+}
+
+func (x *TenantCreated) GetName() string {
+	if x != nil {
+		return x.Name
+	}
+	return ""
+}
+
+type TenantUpdated struct {
+	state         protoimpl.MessageState   `protogen:"open.v1"`
+	Meta          *v1.NotificationEnvelope `protobuf:"bytes,1,opt,name=meta,proto3" json:"meta,omitempty"`
+	TenantId      string                   `protobuf:"bytes,2,opt,name=tenant_id,proto3" json:"tenant_id,omitempty"`
+	Name          string                   `protobuf:"bytes,3,opt,name=name,proto3" json:"name,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *TenantUpdated) Reset() {
+	*x = TenantUpdated{}
 	mi := &file_proto_scg_tenant_v1_tenant_notifications_proto_msgTypes[1]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *TenantGoodbyeRequested) String() string {
+func (x *TenantUpdated) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*TenantGoodbyeRequested) ProtoMessage() {}
+func (*TenantUpdated) ProtoMessage() {}
 
-func (x *TenantGoodbyeRequested) ProtoReflect() protoreflect.Message {
+func (x *TenantUpdated) ProtoReflect() protoreflect.Message {
 	mi := &file_proto_scg_tenant_v1_tenant_notifications_proto_msgTypes[1]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -134,71 +124,117 @@ func (x *TenantGoodbyeRequested) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use TenantGoodbyeRequested.ProtoReflect.Descriptor instead.
-func (*TenantGoodbyeRequested) Descriptor() ([]byte, []int) {
+// Deprecated: Use TenantUpdated.ProtoReflect.Descriptor instead.
+func (*TenantUpdated) Descriptor() ([]byte, []int) {
 	return file_proto_scg_tenant_v1_tenant_notifications_proto_rawDescGZIP(), []int{1}
 }
 
-func (x *TenantGoodbyeRequested) GetMeta() *v1.NotificationEnvelope {
+func (x *TenantUpdated) GetMeta() *v1.NotificationEnvelope {
 	if x != nil {
 		return x.Meta
 	}
 	return nil
 }
 
-func (x *TenantGoodbyeRequested) GetTenantUuid() string {
+func (x *TenantUpdated) GetTenantId() string {
 	if x != nil {
-		return x.TenantUuid
+		return x.TenantId
 	}
 	return ""
 }
 
-func (x *TenantGoodbyeRequested) GetTenantKey() string {
+func (x *TenantUpdated) GetName() string {
 	if x != nil {
-		return x.TenantKey
+		return x.Name
 	}
 	return ""
 }
 
-func (x *TenantGoodbyeRequested) GetReason() string {
+type TenantDeactivated struct {
+	state         protoimpl.MessageState   `protogen:"open.v1"`
+	Meta          *v1.NotificationEnvelope `protobuf:"bytes,1,opt,name=meta,proto3" json:"meta,omitempty"`
+	TenantId      string                   `protobuf:"bytes,2,opt,name=tenant_id,proto3" json:"tenant_id,omitempty"`
+	Reason        string                   `protobuf:"bytes,3,opt,name=reason,proto3" json:"reason,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *TenantDeactivated) Reset() {
+	*x = TenantDeactivated{}
+	mi := &file_proto_scg_tenant_v1_tenant_notifications_proto_msgTypes[2]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *TenantDeactivated) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*TenantDeactivated) ProtoMessage() {}
+
+func (x *TenantDeactivated) ProtoReflect() protoreflect.Message {
+	mi := &file_proto_scg_tenant_v1_tenant_notifications_proto_msgTypes[2]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use TenantDeactivated.ProtoReflect.Descriptor instead.
+func (*TenantDeactivated) Descriptor() ([]byte, []int) {
+	return file_proto_scg_tenant_v1_tenant_notifications_proto_rawDescGZIP(), []int{2}
+}
+
+func (x *TenantDeactivated) GetMeta() *v1.NotificationEnvelope {
+	if x != nil {
+		return x.Meta
+	}
+	return nil
+}
+
+func (x *TenantDeactivated) GetTenantId() string {
+	if x != nil {
+		return x.TenantId
+	}
+	return ""
+}
+
+func (x *TenantDeactivated) GetReason() string {
 	if x != nil {
 		return x.Reason
 	}
 	return ""
 }
 
-func (x *TenantGoodbyeRequested) GetTemplateHint() string {
-	if x != nil {
-		return x.TemplateHint
-	}
-	return ""
-}
-
-type TenantReactivatedRequested struct {
+type TenantMemberAdded struct {
 	state         protoimpl.MessageState   `protogen:"open.v1"`
 	Meta          *v1.NotificationEnvelope `protobuf:"bytes,1,opt,name=meta,proto3" json:"meta,omitempty"`
-	TenantUuid    string                   `protobuf:"bytes,2,opt,name=tenant_uuid,proto3" json:"tenant_uuid,omitempty"`
-	TenantKey     string                   `protobuf:"bytes,3,opt,name=tenant_key,proto3" json:"tenant_key,omitempty"`
-	TemplateHint  string                   `protobuf:"bytes,4,opt,name=template_hint,proto3" json:"template_hint,omitempty"`
+	TenantId      string                   `protobuf:"bytes,2,opt,name=tenant_id,proto3" json:"tenant_id,omitempty"`
+	UserId        string                   `protobuf:"bytes,3,opt,name=user_id,proto3" json:"user_id,omitempty"`
+	Role          string                   `protobuf:"bytes,4,opt,name=role,proto3" json:"role,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *TenantReactivatedRequested) Reset() {
-	*x = TenantReactivatedRequested{}
-	mi := &file_proto_scg_tenant_v1_tenant_notifications_proto_msgTypes[2]
+func (x *TenantMemberAdded) Reset() {
+	*x = TenantMemberAdded{}
+	mi := &file_proto_scg_tenant_v1_tenant_notifications_proto_msgTypes[3]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *TenantReactivatedRequested) String() string {
+func (x *TenantMemberAdded) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*TenantReactivatedRequested) ProtoMessage() {}
+func (*TenantMemberAdded) ProtoMessage() {}
 
-func (x *TenantReactivatedRequested) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_scg_tenant_v1_tenant_notifications_proto_msgTypes[2]
+func (x *TenantMemberAdded) ProtoReflect() protoreflect.Message {
+	mi := &file_proto_scg_tenant_v1_tenant_notifications_proto_msgTypes[3]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -209,67 +245,548 @@ func (x *TenantReactivatedRequested) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use TenantReactivatedRequested.ProtoReflect.Descriptor instead.
-func (*TenantReactivatedRequested) Descriptor() ([]byte, []int) {
-	return file_proto_scg_tenant_v1_tenant_notifications_proto_rawDescGZIP(), []int{2}
+// Deprecated: Use TenantMemberAdded.ProtoReflect.Descriptor instead.
+func (*TenantMemberAdded) Descriptor() ([]byte, []int) {
+	return file_proto_scg_tenant_v1_tenant_notifications_proto_rawDescGZIP(), []int{3}
 }
 
-func (x *TenantReactivatedRequested) GetMeta() *v1.NotificationEnvelope {
+func (x *TenantMemberAdded) GetMeta() *v1.NotificationEnvelope {
 	if x != nil {
 		return x.Meta
 	}
 	return nil
 }
 
-func (x *TenantReactivatedRequested) GetTenantUuid() string {
+func (x *TenantMemberAdded) GetTenantId() string {
 	if x != nil {
-		return x.TenantUuid
+		return x.TenantId
 	}
 	return ""
 }
 
-func (x *TenantReactivatedRequested) GetTenantKey() string {
+func (x *TenantMemberAdded) GetUserId() string {
 	if x != nil {
-		return x.TenantKey
+		return x.UserId
 	}
 	return ""
 }
 
-func (x *TenantReactivatedRequested) GetTemplateHint() string {
+func (x *TenantMemberAdded) GetRole() string {
 	if x != nil {
-		return x.TemplateHint
+		return x.Role
 	}
 	return ""
+}
+
+type TenantMemberRemoved struct {
+	state         protoimpl.MessageState   `protogen:"open.v1"`
+	Meta          *v1.NotificationEnvelope `protobuf:"bytes,1,opt,name=meta,proto3" json:"meta,omitempty"`
+	TenantId      string                   `protobuf:"bytes,2,opt,name=tenant_id,proto3" json:"tenant_id,omitempty"`
+	UserId        string                   `protobuf:"bytes,3,opt,name=user_id,proto3" json:"user_id,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *TenantMemberRemoved) Reset() {
+	*x = TenantMemberRemoved{}
+	mi := &file_proto_scg_tenant_v1_tenant_notifications_proto_msgTypes[4]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *TenantMemberRemoved) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*TenantMemberRemoved) ProtoMessage() {}
+
+func (x *TenantMemberRemoved) ProtoReflect() protoreflect.Message {
+	mi := &file_proto_scg_tenant_v1_tenant_notifications_proto_msgTypes[4]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use TenantMemberRemoved.ProtoReflect.Descriptor instead.
+func (*TenantMemberRemoved) Descriptor() ([]byte, []int) {
+	return file_proto_scg_tenant_v1_tenant_notifications_proto_rawDescGZIP(), []int{4}
+}
+
+func (x *TenantMemberRemoved) GetMeta() *v1.NotificationEnvelope {
+	if x != nil {
+		return x.Meta
+	}
+	return nil
+}
+
+func (x *TenantMemberRemoved) GetTenantId() string {
+	if x != nil {
+		return x.TenantId
+	}
+	return ""
+}
+
+func (x *TenantMemberRemoved) GetUserId() string {
+	if x != nil {
+		return x.UserId
+	}
+	return ""
+}
+
+type TenantMemberRoleChanged struct {
+	state         protoimpl.MessageState   `protogen:"open.v1"`
+	Meta          *v1.NotificationEnvelope `protobuf:"bytes,1,opt,name=meta,proto3" json:"meta,omitempty"`
+	TenantId      string                   `protobuf:"bytes,2,opt,name=tenant_id,proto3" json:"tenant_id,omitempty"`
+	UserId        string                   `protobuf:"bytes,3,opt,name=user_id,proto3" json:"user_id,omitempty"`
+	Role          string                   `protobuf:"bytes,4,opt,name=role,proto3" json:"role,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *TenantMemberRoleChanged) Reset() {
+	*x = TenantMemberRoleChanged{}
+	mi := &file_proto_scg_tenant_v1_tenant_notifications_proto_msgTypes[5]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *TenantMemberRoleChanged) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*TenantMemberRoleChanged) ProtoMessage() {}
+
+func (x *TenantMemberRoleChanged) ProtoReflect() protoreflect.Message {
+	mi := &file_proto_scg_tenant_v1_tenant_notifications_proto_msgTypes[5]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use TenantMemberRoleChanged.ProtoReflect.Descriptor instead.
+func (*TenantMemberRoleChanged) Descriptor() ([]byte, []int) {
+	return file_proto_scg_tenant_v1_tenant_notifications_proto_rawDescGZIP(), []int{5}
+}
+
+func (x *TenantMemberRoleChanged) GetMeta() *v1.NotificationEnvelope {
+	if x != nil {
+		return x.Meta
+	}
+	return nil
+}
+
+func (x *TenantMemberRoleChanged) GetTenantId() string {
+	if x != nil {
+		return x.TenantId
+	}
+	return ""
+}
+
+func (x *TenantMemberRoleChanged) GetUserId() string {
+	if x != nil {
+		return x.UserId
+	}
+	return ""
+}
+
+func (x *TenantMemberRoleChanged) GetRole() string {
+	if x != nil {
+		return x.Role
+	}
+	return ""
+}
+
+type PolicySetPublished struct {
+	state         protoimpl.MessageState   `protogen:"open.v1"`
+	Meta          *v1.NotificationEnvelope `protobuf:"bytes,1,opt,name=meta,proto3" json:"meta,omitempty"`
+	TenantId      string                   `protobuf:"bytes,2,opt,name=tenant_id,proto3" json:"tenant_id,omitempty"`
+	PolicySetId   string                   `protobuf:"bytes,3,opt,name=policy_set_id,proto3" json:"policy_set_id,omitempty"`
+	Version       int64                    `protobuf:"varint,4,opt,name=version,proto3" json:"version,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *PolicySetPublished) Reset() {
+	*x = PolicySetPublished{}
+	mi := &file_proto_scg_tenant_v1_tenant_notifications_proto_msgTypes[6]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *PolicySetPublished) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*PolicySetPublished) ProtoMessage() {}
+
+func (x *PolicySetPublished) ProtoReflect() protoreflect.Message {
+	mi := &file_proto_scg_tenant_v1_tenant_notifications_proto_msgTypes[6]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use PolicySetPublished.ProtoReflect.Descriptor instead.
+func (*PolicySetPublished) Descriptor() ([]byte, []int) {
+	return file_proto_scg_tenant_v1_tenant_notifications_proto_rawDescGZIP(), []int{6}
+}
+
+func (x *PolicySetPublished) GetMeta() *v1.NotificationEnvelope {
+	if x != nil {
+		return x.Meta
+	}
+	return nil
+}
+
+func (x *PolicySetPublished) GetTenantId() string {
+	if x != nil {
+		return x.TenantId
+	}
+	return ""
+}
+
+func (x *PolicySetPublished) GetPolicySetId() string {
+	if x != nil {
+		return x.PolicySetId
+	}
+	return ""
+}
+
+func (x *PolicySetPublished) GetVersion() int64 {
+	if x != nil {
+		return x.Version
+	}
+	return 0
+}
+
+type PolicySetActivated struct {
+	state         protoimpl.MessageState   `protogen:"open.v1"`
+	Meta          *v1.NotificationEnvelope `protobuf:"bytes,1,opt,name=meta,proto3" json:"meta,omitempty"`
+	TenantId      string                   `protobuf:"bytes,2,opt,name=tenant_id,proto3" json:"tenant_id,omitempty"`
+	PolicySetId   string                   `protobuf:"bytes,3,opt,name=policy_set_id,proto3" json:"policy_set_id,omitempty"`
+	Version       int64                    `protobuf:"varint,4,opt,name=version,proto3" json:"version,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *PolicySetActivated) Reset() {
+	*x = PolicySetActivated{}
+	mi := &file_proto_scg_tenant_v1_tenant_notifications_proto_msgTypes[7]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *PolicySetActivated) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*PolicySetActivated) ProtoMessage() {}
+
+func (x *PolicySetActivated) ProtoReflect() protoreflect.Message {
+	mi := &file_proto_scg_tenant_v1_tenant_notifications_proto_msgTypes[7]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use PolicySetActivated.ProtoReflect.Descriptor instead.
+func (*PolicySetActivated) Descriptor() ([]byte, []int) {
+	return file_proto_scg_tenant_v1_tenant_notifications_proto_rawDescGZIP(), []int{7}
+}
+
+func (x *PolicySetActivated) GetMeta() *v1.NotificationEnvelope {
+	if x != nil {
+		return x.Meta
+	}
+	return nil
+}
+
+func (x *PolicySetActivated) GetTenantId() string {
+	if x != nil {
+		return x.TenantId
+	}
+	return ""
+}
+
+func (x *PolicySetActivated) GetPolicySetId() string {
+	if x != nil {
+		return x.PolicySetId
+	}
+	return ""
+}
+
+func (x *PolicySetActivated) GetVersion() int64 {
+	if x != nil {
+		return x.Version
+	}
+	return 0
+}
+
+type ConnectorConfigured struct {
+	state         protoimpl.MessageState   `protogen:"open.v1"`
+	Meta          *v1.NotificationEnvelope `protobuf:"bytes,1,opt,name=meta,proto3" json:"meta,omitempty"`
+	TenantId      string                   `protobuf:"bytes,2,opt,name=tenant_id,proto3" json:"tenant_id,omitempty"`
+	Connector     string                   `protobuf:"bytes,3,opt,name=connector,proto3" json:"connector,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ConnectorConfigured) Reset() {
+	*x = ConnectorConfigured{}
+	mi := &file_proto_scg_tenant_v1_tenant_notifications_proto_msgTypes[8]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ConnectorConfigured) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ConnectorConfigured) ProtoMessage() {}
+
+func (x *ConnectorConfigured) ProtoReflect() protoreflect.Message {
+	mi := &file_proto_scg_tenant_v1_tenant_notifications_proto_msgTypes[8]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ConnectorConfigured.ProtoReflect.Descriptor instead.
+func (*ConnectorConfigured) Descriptor() ([]byte, []int) {
+	return file_proto_scg_tenant_v1_tenant_notifications_proto_rawDescGZIP(), []int{8}
+}
+
+func (x *ConnectorConfigured) GetMeta() *v1.NotificationEnvelope {
+	if x != nil {
+		return x.Meta
+	}
+	return nil
+}
+
+func (x *ConnectorConfigured) GetTenantId() string {
+	if x != nil {
+		return x.TenantId
+	}
+	return ""
+}
+
+func (x *ConnectorConfigured) GetConnector() string {
+	if x != nil {
+		return x.Connector
+	}
+	return ""
+}
+
+type ConnectorDisabled struct {
+	state         protoimpl.MessageState   `protogen:"open.v1"`
+	Meta          *v1.NotificationEnvelope `protobuf:"bytes,1,opt,name=meta,proto3" json:"meta,omitempty"`
+	TenantId      string                   `protobuf:"bytes,2,opt,name=tenant_id,proto3" json:"tenant_id,omitempty"`
+	Connector     string                   `protobuf:"bytes,3,opt,name=connector,proto3" json:"connector,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ConnectorDisabled) Reset() {
+	*x = ConnectorDisabled{}
+	mi := &file_proto_scg_tenant_v1_tenant_notifications_proto_msgTypes[9]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ConnectorDisabled) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ConnectorDisabled) ProtoMessage() {}
+
+func (x *ConnectorDisabled) ProtoReflect() protoreflect.Message {
+	mi := &file_proto_scg_tenant_v1_tenant_notifications_proto_msgTypes[9]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ConnectorDisabled.ProtoReflect.Descriptor instead.
+func (*ConnectorDisabled) Descriptor() ([]byte, []int) {
+	return file_proto_scg_tenant_v1_tenant_notifications_proto_rawDescGZIP(), []int{9}
+}
+
+func (x *ConnectorDisabled) GetMeta() *v1.NotificationEnvelope {
+	if x != nil {
+		return x.Meta
+	}
+	return nil
+}
+
+func (x *ConnectorDisabled) GetTenantId() string {
+	if x != nil {
+		return x.TenantId
+	}
+	return ""
+}
+
+func (x *ConnectorDisabled) GetConnector() string {
+	if x != nil {
+		return x.Connector
+	}
+	return ""
+}
+
+type FeatureFlagChanged struct {
+	state         protoimpl.MessageState   `protogen:"open.v1"`
+	Meta          *v1.NotificationEnvelope `protobuf:"bytes,1,opt,name=meta,proto3" json:"meta,omitempty"`
+	TenantId      string                   `protobuf:"bytes,2,opt,name=tenant_id,proto3" json:"tenant_id,omitempty"`
+	Flag          string                   `protobuf:"bytes,3,opt,name=flag,proto3" json:"flag,omitempty"`
+	Enabled       bool                     `protobuf:"varint,4,opt,name=enabled,proto3" json:"enabled,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *FeatureFlagChanged) Reset() {
+	*x = FeatureFlagChanged{}
+	mi := &file_proto_scg_tenant_v1_tenant_notifications_proto_msgTypes[10]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *FeatureFlagChanged) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*FeatureFlagChanged) ProtoMessage() {}
+
+func (x *FeatureFlagChanged) ProtoReflect() protoreflect.Message {
+	mi := &file_proto_scg_tenant_v1_tenant_notifications_proto_msgTypes[10]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use FeatureFlagChanged.ProtoReflect.Descriptor instead.
+func (*FeatureFlagChanged) Descriptor() ([]byte, []int) {
+	return file_proto_scg_tenant_v1_tenant_notifications_proto_rawDescGZIP(), []int{10}
+}
+
+func (x *FeatureFlagChanged) GetMeta() *v1.NotificationEnvelope {
+	if x != nil {
+		return x.Meta
+	}
+	return nil
+}
+
+func (x *FeatureFlagChanged) GetTenantId() string {
+	if x != nil {
+		return x.TenantId
+	}
+	return ""
+}
+
+func (x *FeatureFlagChanged) GetFlag() string {
+	if x != nil {
+		return x.Flag
+	}
+	return ""
+}
+
+func (x *FeatureFlagChanged) GetEnabled() bool {
+	if x != nil {
+		return x.Enabled
+	}
+	return false
 }
 
 var File_proto_scg_tenant_v1_tenant_notifications_proto protoreflect.FileDescriptor
 
 const file_proto_scg_tenant_v1_tenant_notifications_proto_rawDesc = "" +
 	"\n" +
-	".proto/scg/tenant/v1/tenant_notifications.proto\x12\rscg.tenant.v1\x1a-proto/scg/common/v1/notification_common.proto\"\xe5\x01\n" +
-	"\x16TenantWelcomeRequested\x127\n" +
-	"\x04meta\x18\x01 \x01(\v2#.scg.common.v1.NotificationEnvelopeR\x04meta\x12 \n" +
-	"\vtenant_uuid\x18\x02 \x01(\tR\vtenant_uuid\x12\x1e\n" +
+	".proto/scg/tenant/v1/tenant_notifications.proto\x12\rscg.tenant.v1\x1a-proto/scg/common/v1/notification_common.proto\"\x9a\x01\n" +
+	"\rTenantCreated\x127\n" +
+	"\x04meta\x18\x01 \x01(\v2#.scg.common.v1.NotificationEnvelopeR\x04meta\x12\x1c\n" +
+	"\ttenant_id\x18\x02 \x01(\tR\ttenant_id\x12\x1e\n" +
 	"\n" +
 	"tenant_key\x18\x03 \x01(\tR\n" +
-	"tenant_key\x12*\n" +
-	"\x10recipient_emails\x18\x04 \x03(\tR\x10recipient_emails\x12$\n" +
-	"\rtemplate_hint\x18\x05 \x01(\tR\rtemplate_hint\"\xd1\x01\n" +
-	"\x16TenantGoodbyeRequested\x127\n" +
-	"\x04meta\x18\x01 \x01(\v2#.scg.common.v1.NotificationEnvelopeR\x04meta\x12 \n" +
-	"\vtenant_uuid\x18\x02 \x01(\tR\vtenant_uuid\x12\x1e\n" +
-	"\n" +
-	"tenant_key\x18\x03 \x01(\tR\n" +
-	"tenant_key\x12\x16\n" +
-	"\x06reason\x18\x04 \x01(\tR\x06reason\x12$\n" +
-	"\rtemplate_hint\x18\x05 \x01(\tR\rtemplate_hint\"\xbd\x01\n" +
-	"\x1aTenantReactivatedRequested\x127\n" +
-	"\x04meta\x18\x01 \x01(\v2#.scg.common.v1.NotificationEnvelopeR\x04meta\x12 \n" +
-	"\vtenant_uuid\x18\x02 \x01(\tR\vtenant_uuid\x12\x1e\n" +
-	"\n" +
-	"tenant_key\x18\x03 \x01(\tR\n" +
-	"tenant_key\x12$\n" +
-	"\rtemplate_hint\x18\x04 \x01(\tR\rtemplate_hintBVZTgithub.com/next-trace/scg-notification-contracts/gen/go/proto/scg/tenant/v1;tenantv1b\x06proto3"
+	"tenant_key\x12\x12\n" +
+	"\x04name\x18\x04 \x01(\tR\x04name\"z\n" +
+	"\rTenantUpdated\x127\n" +
+	"\x04meta\x18\x01 \x01(\v2#.scg.common.v1.NotificationEnvelopeR\x04meta\x12\x1c\n" +
+	"\ttenant_id\x18\x02 \x01(\tR\ttenant_id\x12\x12\n" +
+	"\x04name\x18\x03 \x01(\tR\x04name\"\x82\x01\n" +
+	"\x11TenantDeactivated\x127\n" +
+	"\x04meta\x18\x01 \x01(\v2#.scg.common.v1.NotificationEnvelopeR\x04meta\x12\x1c\n" +
+	"\ttenant_id\x18\x02 \x01(\tR\ttenant_id\x12\x16\n" +
+	"\x06reason\x18\x03 \x01(\tR\x06reason\"\x98\x01\n" +
+	"\x11TenantMemberAdded\x127\n" +
+	"\x04meta\x18\x01 \x01(\v2#.scg.common.v1.NotificationEnvelopeR\x04meta\x12\x1c\n" +
+	"\ttenant_id\x18\x02 \x01(\tR\ttenant_id\x12\x18\n" +
+	"\auser_id\x18\x03 \x01(\tR\auser_id\x12\x12\n" +
+	"\x04role\x18\x04 \x01(\tR\x04role\"\x86\x01\n" +
+	"\x13TenantMemberRemoved\x127\n" +
+	"\x04meta\x18\x01 \x01(\v2#.scg.common.v1.NotificationEnvelopeR\x04meta\x12\x1c\n" +
+	"\ttenant_id\x18\x02 \x01(\tR\ttenant_id\x12\x18\n" +
+	"\auser_id\x18\x03 \x01(\tR\auser_id\"\x9e\x01\n" +
+	"\x17TenantMemberRoleChanged\x127\n" +
+	"\x04meta\x18\x01 \x01(\v2#.scg.common.v1.NotificationEnvelopeR\x04meta\x12\x1c\n" +
+	"\ttenant_id\x18\x02 \x01(\tR\ttenant_id\x12\x18\n" +
+	"\auser_id\x18\x03 \x01(\tR\auser_id\x12\x12\n" +
+	"\x04role\x18\x04 \x01(\tR\x04role\"\xab\x01\n" +
+	"\x12PolicySetPublished\x127\n" +
+	"\x04meta\x18\x01 \x01(\v2#.scg.common.v1.NotificationEnvelopeR\x04meta\x12\x1c\n" +
+	"\ttenant_id\x18\x02 \x01(\tR\ttenant_id\x12$\n" +
+	"\rpolicy_set_id\x18\x03 \x01(\tR\rpolicy_set_id\x12\x18\n" +
+	"\aversion\x18\x04 \x01(\x03R\aversion\"\xab\x01\n" +
+	"\x12PolicySetActivated\x127\n" +
+	"\x04meta\x18\x01 \x01(\v2#.scg.common.v1.NotificationEnvelopeR\x04meta\x12\x1c\n" +
+	"\ttenant_id\x18\x02 \x01(\tR\ttenant_id\x12$\n" +
+	"\rpolicy_set_id\x18\x03 \x01(\tR\rpolicy_set_id\x12\x18\n" +
+	"\aversion\x18\x04 \x01(\x03R\aversion\"\x8a\x01\n" +
+	"\x13ConnectorConfigured\x127\n" +
+	"\x04meta\x18\x01 \x01(\v2#.scg.common.v1.NotificationEnvelopeR\x04meta\x12\x1c\n" +
+	"\ttenant_id\x18\x02 \x01(\tR\ttenant_id\x12\x1c\n" +
+	"\tconnector\x18\x03 \x01(\tR\tconnector\"\x88\x01\n" +
+	"\x11ConnectorDisabled\x127\n" +
+	"\x04meta\x18\x01 \x01(\v2#.scg.common.v1.NotificationEnvelopeR\x04meta\x12\x1c\n" +
+	"\ttenant_id\x18\x02 \x01(\tR\ttenant_id\x12\x1c\n" +
+	"\tconnector\x18\x03 \x01(\tR\tconnector\"\x99\x01\n" +
+	"\x12FeatureFlagChanged\x127\n" +
+	"\x04meta\x18\x01 \x01(\v2#.scg.common.v1.NotificationEnvelopeR\x04meta\x12\x1c\n" +
+	"\ttenant_id\x18\x02 \x01(\tR\ttenant_id\x12\x12\n" +
+	"\x04flag\x18\x03 \x01(\tR\x04flag\x12\x18\n" +
+	"\aenabled\x18\x04 \x01(\bR\aenabledBVZTgithub.com/next-trace/scg-notification-contracts/gen/go/proto/scg/tenant/v1;tenantv1b\x06proto3"
 
 var (
 	file_proto_scg_tenant_v1_tenant_notifications_proto_rawDescOnce sync.Once
@@ -283,22 +800,38 @@ func file_proto_scg_tenant_v1_tenant_notifications_proto_rawDescGZIP() []byte {
 	return file_proto_scg_tenant_v1_tenant_notifications_proto_rawDescData
 }
 
-var file_proto_scg_tenant_v1_tenant_notifications_proto_msgTypes = make([]protoimpl.MessageInfo, 3)
+var file_proto_scg_tenant_v1_tenant_notifications_proto_msgTypes = make([]protoimpl.MessageInfo, 11)
 var file_proto_scg_tenant_v1_tenant_notifications_proto_goTypes = []any{
-	(*TenantWelcomeRequested)(nil),     // 0: scg.tenant.v1.TenantWelcomeRequested
-	(*TenantGoodbyeRequested)(nil),     // 1: scg.tenant.v1.TenantGoodbyeRequested
-	(*TenantReactivatedRequested)(nil), // 2: scg.tenant.v1.TenantReactivatedRequested
-	(*v1.NotificationEnvelope)(nil),    // 3: scg.common.v1.NotificationEnvelope
+	(*TenantCreated)(nil),           // 0: scg.tenant.v1.TenantCreated
+	(*TenantUpdated)(nil),           // 1: scg.tenant.v1.TenantUpdated
+	(*TenantDeactivated)(nil),       // 2: scg.tenant.v1.TenantDeactivated
+	(*TenantMemberAdded)(nil),       // 3: scg.tenant.v1.TenantMemberAdded
+	(*TenantMemberRemoved)(nil),     // 4: scg.tenant.v1.TenantMemberRemoved
+	(*TenantMemberRoleChanged)(nil), // 5: scg.tenant.v1.TenantMemberRoleChanged
+	(*PolicySetPublished)(nil),      // 6: scg.tenant.v1.PolicySetPublished
+	(*PolicySetActivated)(nil),      // 7: scg.tenant.v1.PolicySetActivated
+	(*ConnectorConfigured)(nil),     // 8: scg.tenant.v1.ConnectorConfigured
+	(*ConnectorDisabled)(nil),       // 9: scg.tenant.v1.ConnectorDisabled
+	(*FeatureFlagChanged)(nil),      // 10: scg.tenant.v1.FeatureFlagChanged
+	(*v1.NotificationEnvelope)(nil), // 11: scg.common.v1.NotificationEnvelope
 }
 var file_proto_scg_tenant_v1_tenant_notifications_proto_depIdxs = []int32{
-	3, // 0: scg.tenant.v1.TenantWelcomeRequested.meta:type_name -> scg.common.v1.NotificationEnvelope
-	3, // 1: scg.tenant.v1.TenantGoodbyeRequested.meta:type_name -> scg.common.v1.NotificationEnvelope
-	3, // 2: scg.tenant.v1.TenantReactivatedRequested.meta:type_name -> scg.common.v1.NotificationEnvelope
-	3, // [3:3] is the sub-list for method output_type
-	3, // [3:3] is the sub-list for method input_type
-	3, // [3:3] is the sub-list for extension type_name
-	3, // [3:3] is the sub-list for extension extendee
-	0, // [0:3] is the sub-list for field type_name
+	11, // 0: scg.tenant.v1.TenantCreated.meta:type_name -> scg.common.v1.NotificationEnvelope
+	11, // 1: scg.tenant.v1.TenantUpdated.meta:type_name -> scg.common.v1.NotificationEnvelope
+	11, // 2: scg.tenant.v1.TenantDeactivated.meta:type_name -> scg.common.v1.NotificationEnvelope
+	11, // 3: scg.tenant.v1.TenantMemberAdded.meta:type_name -> scg.common.v1.NotificationEnvelope
+	11, // 4: scg.tenant.v1.TenantMemberRemoved.meta:type_name -> scg.common.v1.NotificationEnvelope
+	11, // 5: scg.tenant.v1.TenantMemberRoleChanged.meta:type_name -> scg.common.v1.NotificationEnvelope
+	11, // 6: scg.tenant.v1.PolicySetPublished.meta:type_name -> scg.common.v1.NotificationEnvelope
+	11, // 7: scg.tenant.v1.PolicySetActivated.meta:type_name -> scg.common.v1.NotificationEnvelope
+	11, // 8: scg.tenant.v1.ConnectorConfigured.meta:type_name -> scg.common.v1.NotificationEnvelope
+	11, // 9: scg.tenant.v1.ConnectorDisabled.meta:type_name -> scg.common.v1.NotificationEnvelope
+	11, // 10: scg.tenant.v1.FeatureFlagChanged.meta:type_name -> scg.common.v1.NotificationEnvelope
+	11, // [11:11] is the sub-list for method output_type
+	11, // [11:11] is the sub-list for method input_type
+	11, // [11:11] is the sub-list for extension type_name
+	11, // [11:11] is the sub-list for extension extendee
+	0,  // [0:11] is the sub-list for field type_name
 }
 
 func init() { file_proto_scg_tenant_v1_tenant_notifications_proto_init() }
@@ -312,7 +845,7 @@ func file_proto_scg_tenant_v1_tenant_notifications_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_proto_scg_tenant_v1_tenant_notifications_proto_rawDesc), len(file_proto_scg_tenant_v1_tenant_notifications_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   3,
+			NumMessages:   11,
 			NumExtensions: 0,
 			NumServices:   0,
 		},
