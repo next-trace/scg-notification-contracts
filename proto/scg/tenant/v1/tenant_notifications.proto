@@ -6,25 +6,74 @@ import "proto/scg/common/v1/notification_common.proto";
 
 option go_package = "github.com/next-trace/scg-notification-contracts/gen/go/proto/scg/tenant/v1;tenantv1";
 
-message TenantWelcomeRequested {
+message TenantCreated {
   scg.common.v1.NotificationEnvelope meta = 1 [json_name = "meta"];
-  string tenant_uuid = 2 [json_name = "tenant_uuid"];
-  string tenant_key  = 3 [json_name = "tenant_key"];
-  repeated string recipient_emails = 4 [json_name = "recipient_emails"]; // optional per policy
-  string template_hint = 5 [json_name = "template_hint"];
+  string tenant_id = 2 [json_name = "tenant_id"];
+  string tenant_key = 3 [json_name = "tenant_key"];
+  string name = 4 [json_name = "name"];
 }
 
-message TenantGoodbyeRequested {
+message TenantUpdated {
   scg.common.v1.NotificationEnvelope meta = 1 [json_name = "meta"];
-  string tenant_uuid = 2 [json_name = "tenant_uuid"];
-  string tenant_key  = 3 [json_name = "tenant_key"];
-  string reason        = 4 [json_name = "reason"];
-  string template_hint = 5 [json_name = "template_hint"];
+  string tenant_id = 2 [json_name = "tenant_id"];
+  string name = 3 [json_name = "name"];
 }
 
-message TenantReactivatedRequested {
+message TenantDeactivated {
   scg.common.v1.NotificationEnvelope meta = 1 [json_name = "meta"];
-  string tenant_uuid = 2 [json_name = "tenant_uuid"];
-  string tenant_key  = 3 [json_name = "tenant_key"];
-  string template_hint = 4 [json_name = "template_hint"];
+  string tenant_id = 2 [json_name = "tenant_id"];
+  string reason = 3 [json_name = "reason"];
+}
+
+message TenantMemberAdded {
+  scg.common.v1.NotificationEnvelope meta = 1 [json_name = "meta"];
+  string tenant_id = 2 [json_name = "tenant_id"];
+  string user_id = 3 [json_name = "user_id"];
+  string role = 4 [json_name = "role"];
+}
+
+message TenantMemberRemoved {
+  scg.common.v1.NotificationEnvelope meta = 1 [json_name = "meta"];
+  string tenant_id = 2 [json_name = "tenant_id"];
+  string user_id = 3 [json_name = "user_id"];
+}
+
+message TenantMemberRoleChanged {
+  scg.common.v1.NotificationEnvelope meta = 1 [json_name = "meta"];
+  string tenant_id = 2 [json_name = "tenant_id"];
+  string user_id = 3 [json_name = "user_id"];
+  string role = 4 [json_name = "role"];
+}
+
+message PolicySetPublished {
+  scg.common.v1.NotificationEnvelope meta = 1 [json_name = "meta"];
+  string tenant_id = 2 [json_name = "tenant_id"];
+  string policy_set_id = 3 [json_name = "policy_set_id"];
+  int64 version = 4 [json_name = "version"];
+}
+
+message PolicySetActivated {
+  scg.common.v1.NotificationEnvelope meta = 1 [json_name = "meta"];
+  string tenant_id = 2 [json_name = "tenant_id"];
+  string policy_set_id = 3 [json_name = "policy_set_id"];
+  int64 version = 4 [json_name = "version"];
+}
+
+message ConnectorConfigured {
+  scg.common.v1.NotificationEnvelope meta = 1 [json_name = "meta"];
+  string tenant_id = 2 [json_name = "tenant_id"];
+  string connector = 3 [json_name = "connector"];
+}
+
+message ConnectorDisabled {
+  scg.common.v1.NotificationEnvelope meta = 1 [json_name = "meta"];
+  string tenant_id = 2 [json_name = "tenant_id"];
+  string connector = 3 [json_name = "connector"];
+}
+
+message FeatureFlagChanged {
+  scg.common.v1.NotificationEnvelope meta = 1 [json_name = "meta"];
+  string tenant_id = 2 [json_name = "tenant_id"];
+  string flag = 3 [json_name = "flag"];
+  bool enabled = 4 [json_name = "enabled"];
 }

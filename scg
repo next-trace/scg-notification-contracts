@@ -4,7 +4,7 @@ set -e
 # SCG Support Tool
 
 # Variables
-GO_VERSION="1.25.5"
+GO_VERSION="1.25.7"
 
 # Load environment variables from .env file if it exists
 if [ -f .env ]; then
