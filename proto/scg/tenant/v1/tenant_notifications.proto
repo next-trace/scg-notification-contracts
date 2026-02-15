@@ -77,3 +77,10 @@ message FeatureFlagChanged {
   string flag = 3 [json_name = "flag"];
   bool enabled = 4 [json_name = "enabled"];
 }
+
+message TenantSettingChanged {
+  scg.common.v1.NotificationEnvelope meta = 1 [json_name = "meta"];
+  string tenant_id = 2 [json_name = "tenant_id"];
+  string key = 3 [json_name = "key"];
+  bool enabled = 4 [json_name = "enabled"];
+}
