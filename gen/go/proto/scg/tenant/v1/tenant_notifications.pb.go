@@ -730,6 +730,74 @@ func (x *FeatureFlagChanged) GetEnabled() bool {
 	return false
 }
 
+type TenantSettingChanged struct {
+	state         protoimpl.MessageState   `protogen:"open.v1"`
+	Meta          *v1.NotificationEnvelope `protobuf:"bytes,1,opt,name=meta,proto3" json:"meta,omitempty"`
+	TenantId      string                   `protobuf:"bytes,2,opt,name=tenant_id,proto3" json:"tenant_id,omitempty"`
+	Key           string                   `protobuf:"bytes,3,opt,name=key,proto3" json:"key,omitempty"`
+	Enabled       bool                     `protobuf:"varint,4,opt,name=enabled,proto3" json:"enabled,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *TenantSettingChanged) Reset() {
+	*x = TenantSettingChanged{}
+	mi := &file_proto_scg_tenant_v1_tenant_notifications_proto_msgTypes[11]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *TenantSettingChanged) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*TenantSettingChanged) ProtoMessage() {}
+
+func (x *TenantSettingChanged) ProtoReflect() protoreflect.Message {
+	mi := &file_proto_scg_tenant_v1_tenant_notifications_proto_msgTypes[11]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use TenantSettingChanged.ProtoReflect.Descriptor instead.
+func (*TenantSettingChanged) Descriptor() ([]byte, []int) {
+	return file_proto_scg_tenant_v1_tenant_notifications_proto_rawDescGZIP(), []int{11}
+}
+
+func (x *TenantSettingChanged) GetMeta() *v1.NotificationEnvelope {
+	if x != nil {
+		return x.Meta
+	}
+	return nil
+}
+
+func (x *TenantSettingChanged) GetTenantId() string {
+	if x != nil {
+		return x.TenantId
+	}
+	return ""
+}
+
+func (x *TenantSettingChanged) GetKey() string {
+	if x != nil {
+		return x.Key
+	}
+	return ""
+}
+
+func (x *TenantSettingChanged) GetEnabled() bool {
+	if x != nil {
+		return x.Enabled
+	}
+	return false
+}
+
 var File_proto_scg_tenant_v1_tenant_notifications_proto protoreflect.FileDescriptor
 
 const file_proto_scg_tenant_v1_tenant_notifications_proto_rawDesc = "" +
@@ -786,6 +854,11 @@ const file_proto_scg_tenant_v1_tenant_notifications_proto_rawDesc = "" +
 	"\x04meta\x18\x01 \x01(\v2#.scg.common.v1.NotificationEnvelopeR\x04meta\x12\x1c\n" +
 	"\ttenant_id\x18\x02 \x01(\tR\ttenant_id\x12\x12\n" +
 	"\x04flag\x18\x03 \x01(\tR\x04flag\x12\x18\n" +
+	"\aenabled\x18\x04 \x01(\bR\aenabled\"\x99\x01\n" +
+	"\x14TenantSettingChanged\x127\n" +
+	"\x04meta\x18\x01 \x01(\v2#.scg.common.v1.NotificationEnvelopeR\x04meta\x12\x1c\n" +
+	"\ttenant_id\x18\x02 \x01(\tR\ttenant_id\x12\x10\n" +
+	"\x03key\x18\x03 \x01(\tR\x03key\x12\x18\n" +
 	"\aenabled\x18\x04 \x01(\bR\aenabledBVZTgithub.com/next-trace/scg-notification-contracts/gen/go/proto/scg/tenant/v1;tenantv1b\x06proto3"
 
 var (
@@ -800,7 +873,7 @@ func file_proto_scg_tenant_v1_tenant_notifications_proto_rawDescGZIP() []byte {
 	return file_proto_scg_tenant_v1_tenant_notifications_proto_rawDescData
 }
 
-var file_proto_scg_tenant_v1_tenant_notifications_proto_msgTypes = make([]protoimpl.MessageInfo, 11)
+var file_proto_scg_tenant_v1_tenant_notifications_proto_msgTypes = make([]protoimpl.MessageInfo, 12)
 var file_proto_scg_tenant_v1_tenant_notifications_proto_goTypes = []any{
 	(*TenantCreated)(nil),           // 0: scg.tenant.v1.TenantCreated
 	(*TenantUpdated)(nil),           // 1: scg.tenant.v1.TenantUpdated
@@ -813,25 +886,27 @@ var file_proto_scg_tenant_v1_tenant_notifications_proto_goTypes = []any{
 	(*ConnectorConfigured)(nil),     // 8: scg.tenant.v1.ConnectorConfigured
 	(*ConnectorDisabled)(nil),       // 9: scg.tenant.v1.ConnectorDisabled
 	(*FeatureFlagChanged)(nil),      // 10: scg.tenant.v1.FeatureFlagChanged
-	(*v1.NotificationEnvelope)(nil), // 11: scg.common.v1.NotificationEnvelope
+	(*TenantSettingChanged)(nil),    // 11: scg.tenant.v1.TenantSettingChanged
+	(*v1.NotificationEnvelope)(nil), // 12: scg.common.v1.NotificationEnvelope
 }
 var file_proto_scg_tenant_v1_tenant_notifications_proto_depIdxs = []int32{
-	11, // 0: scg.tenant.v1.TenantCreated.meta:type_name -> scg.common.v1.NotificationEnvelope
-	11, // 1: scg.tenant.v1.TenantUpdated.meta:type_name -> scg.common.v1.NotificationEnvelope
-	11, // 2: scg.tenant.v1.TenantDeactivated.meta:type_name -> scg.common.v1.NotificationEnvelope
-	11, // 3: scg.tenant.v1.TenantMemberAdded.meta:type_name -> scg.common.v1.NotificationEnvelope
-	11, // 4: scg.tenant.v1.TenantMemberRemoved.meta:type_name -> scg.common.v1.NotificationEnvelope
-	11, // 5: scg.tenant.v1.TenantMemberRoleChanged.meta:type_name -> scg.common.v1.NotificationEnvelope
-	11, // 6: scg.tenant.v1.PolicySetPublished.meta:type_name -> scg.common.v1.NotificationEnvelope
-	11, // 7: scg.tenant.v1.PolicySetActivated.meta:type_name -> scg.common.v1.NotificationEnvelope
-	11, // 8: scg.tenant.v1.ConnectorConfigured.meta:type_name -> scg.common.v1.NotificationEnvelope
-	11, // 9: scg.tenant.v1.ConnectorDisabled.meta:type_name -> scg.common.v1.NotificationEnvelope
-	11, // 10: scg.tenant.v1.FeatureFlagChanged.meta:type_name -> scg.common.v1.NotificationEnvelope
-	11, // [11:11] is the sub-list for method output_type
-	11, // [11:11] is the sub-list for method input_type
-	11, // [11:11] is the sub-list for extension type_name
-	11, // [11:11] is the sub-list for extension extendee
-	0,  // [0:11] is the sub-list for field type_name
+	12, // 0: scg.tenant.v1.TenantCreated.meta:type_name -> scg.common.v1.NotificationEnvelope
+	12, // 1: scg.tenant.v1.TenantUpdated.meta:type_name -> scg.common.v1.NotificationEnvelope
+	12, // 2: scg.tenant.v1.TenantDeactivated.meta:type_name -> scg.common.v1.NotificationEnvelope
+	12, // 3: scg.tenant.v1.TenantMemberAdded.meta:type_name -> scg.common.v1.NotificationEnvelope
+	12, // 4: scg.tenant.v1.TenantMemberRemoved.meta:type_name -> scg.common.v1.NotificationEnvelope
+	12, // 5: scg.tenant.v1.TenantMemberRoleChanged.meta:type_name -> scg.common.v1.NotificationEnvelope
+	12, // 6: scg.tenant.v1.PolicySetPublished.meta:type_name -> scg.common.v1.NotificationEnvelope
+	12, // 7: scg.tenant.v1.PolicySetActivated.meta:type_name -> scg.common.v1.NotificationEnvelope
+	12, // 8: scg.tenant.v1.ConnectorConfigured.meta:type_name -> scg.common.v1.NotificationEnvelope
+	12, // 9: scg.tenant.v1.ConnectorDisabled.meta:type_name -> scg.common.v1.NotificationEnvelope
+	12, // 10: scg.tenant.v1.FeatureFlagChanged.meta:type_name -> scg.common.v1.NotificationEnvelope
+	12, // 11: scg.tenant.v1.TenantSettingChanged.meta:type_name -> scg.common.v1.NotificationEnvelope
+	12, // [12:12] is the sub-list for method output_type
+	12, // [12:12] is the sub-list for method input_type
+	12, // [12:12] is the sub-list for extension type_name
+	12, // [12:12] is the sub-list for extension extendee
+	0,  // [0:12] is the sub-list for field type_name
 }
 
 func init() { file_proto_scg_tenant_v1_tenant_notifications_proto_init() }
@@ -845,7 +920,7 @@ func file_proto_scg_tenant_v1_tenant_notifications_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_proto_scg_tenant_v1_tenant_notifications_proto_rawDesc), len(file_proto_scg_tenant_v1_tenant_notifications_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   11,
+			NumMessages:   12,
 			NumExtensions: 0,
 			NumServices:   0,
 		},
